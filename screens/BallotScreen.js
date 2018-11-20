@@ -32,7 +32,7 @@ export default class BallotScreen extends React.Component {
             {this._maybeRenderDevelopmentModeWarning()}
 
             <Text style={styles.getStartedText}>
-              HI HI HI Sami says hi.
+              HI HI HI Emma says hi.
             </Text>
           </View>
 
