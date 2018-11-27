@@ -20,7 +20,7 @@ export default class IntroScreen extends React.Component {
     return (
 
         <View style={styles.container}>
-        	<Text style={styles.missionText}> First, let's register you to vote / confirm your registration! </Text>
+        	<Text style={styles.instructionText}> First, let's register you to vote / confirm your registration! </Text>
             <View style={styles.logoContainer}>
               <Image
                 source={require('../assets/images/Scan-complete.png')}
@@ -28,7 +28,6 @@ export default class IntroScreen extends React.Component {
             />
         </View>
 
-        
 
         <TouchableOpacity
             style={styles.button}
@@ -42,6 +41,7 @@ export default class IntroScreen extends React.Component {
 }
 const styles = StyleSheet.create({
   container: {
+  	  paddingTop: 125,
       flex: 1,
       backgroundColor: '#fff',
   },
@@ -55,12 +55,12 @@ const styles = StyleSheet.create({
   },
   logoImage: {
       width: 300,
-      height: 160,
+      height: 300,
       resizeMode: 'contain',
-      marginLeft: -5,
+      marginTop: -150,
   },
-  missionText: {
-      fontSize: 20,
+  instructionText: {
+      fontSize: 35,
       color: 'rgba(96,100,109, 1)',
       lineHeight: 40,
       textAlign: 'center',
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
       textAlign: 'center',
   },
   button: {
-    marginTop: 75,
       backgroundColor: 'purple',
       borderColor: 'white',
       borderWidth: 60,
