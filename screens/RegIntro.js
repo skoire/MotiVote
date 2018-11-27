@@ -19,52 +19,59 @@ export default class IntroScreen extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-            <View style={styles.logoContainer}>
-              <Image
-                source={require('../assets/images/MotiVote-logo.png')}
+          <Text style={styles.instructionText}> First, let's register you to vote / confirm your registration! </Text>
+            <TouchableOpacity
+              style={styles.cameraButton}
+              onPress={() => this.props.cam()}>
+              <Image 
+                source={require('../assets/images/Scan-complete.png')}
                 style={styles.logoImage}
-            />
+              />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.cb()}>
+              <Text style={styles.buttonText}> Fill out form instead </Text>
+          </TouchableOpacity>
+
         </View>
-
-        <Text style={styles.missionText}> First let us register you to vote / confirm your registration! </Text>
-        <Text style={styles.missionText}> Simple & Social </Text>
-
-
-
-        <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.props.cb()}>
-            <Text style={styles.buttonText}> Lets get Started! </Text>
-        </TouchableOpacity>
-
-      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
       flex: 1,
+      paddingTop: 80,
       backgroundColor: '#fff',
-  },
-  contentContainer: {
-      paddingTop: 100,
-  },
-  logoContainer: {
       alignItems: 'center',
-      marginTop: 200,
-      marginBottom: 25,
+      justifyContent: 'center',
   },
   logoImage: {
       width: 300,
-      height: 160,
+      height: 400,
       resizeMode: 'contain',
-      marginLeft: -5,
+      marginTop: -180,
   },
-  missionText: {
+  instructionText: {
       fontSize: 30,
       color: 'rgba(96,100,109, 1)',
       lineHeight: 40,
       textAlign: 'center',
+      marginBottom: 20,
+  },
+  cameraButton: {
+    backgroundColor: '#fff',
+    paddingTop: 180,
+    marginBottom: 60,
+    shadowColor: '#303838',
+    shadowOffset: { width: 0, height: 10 },
+    shadowRadius: 10,
+    shadowOpacity: 0.35,
+    height: 380,
+    width: 260,
+    alignItems: 'center',
+
   },
   buttonText: {
       fontSize: 30,
@@ -73,11 +80,9 @@ const styles = StyleSheet.create({
       textAlign: 'center',
   },
   button: {
-    marginTop: 75,
       backgroundColor: 'purple',
       borderColor: 'white',
-      borderWidth: 60,
-      borderRadius: 75,
+      borderRadius: 10,
       color: 'white',
       fontSize: 24,
       fontWeight: 'bold',

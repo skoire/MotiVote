@@ -23,8 +23,11 @@ export default class App extends React.Component {
           {this.state.introScreenVisible &&
             <IntroScreen cb={this.hideIntroScreen.bind(this)} />
           }
+          {this.state.regIntroVisible &&
+            <RegIntro cb={this.hideIntroScreen.bind(this)} />
+          }
           {!this.state.introScreenVisible &&
-            <AppNavigator />
+            <AppNavigator/>
           }
         </View>
       );
@@ -35,5 +38,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
+  }, 
 });
