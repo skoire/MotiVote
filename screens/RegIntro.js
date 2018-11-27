@@ -18,22 +18,23 @@ export default class IntroScreen extends React.Component {
   };
   render() {
     return (
-
         <View style={styles.container}>
-        	<Text style={styles.missionText}> First, let's register you to vote / confirm your registration! </Text>
             <View style={styles.logoContainer}>
               <Image
-                source={require('../assets/images/Scan-complete.png')}
+                source={require('../assets/images/MotiVote-logo.png')}
                 style={styles.logoImage}
             />
         </View>
 
-        
+        <Text style={styles.missionText}> First let us register you to vote / confirm your registration! </Text>
+        <Text style={styles.missionText}> Simple & Social </Text>
+
+
 
         <TouchableOpacity
             style={styles.button}
             onPress={() => this.props.cb()}>
-            <Text style={styles.buttonText}> Fill out form instead </Text>
+            <Text style={styles.buttonText}> Lets get Started! </Text>
         </TouchableOpacity>
 
       </View>
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
       marginLeft: -5,
   },
   missionText: {
-      fontSize: 20,
+      fontSize: 30,
       color: 'rgba(96,100,109, 1)',
       lineHeight: 40,
       textAlign: 'center',
