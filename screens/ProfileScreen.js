@@ -22,7 +22,7 @@ export default class IntroScreen extends React.Component {
         	<Text style={styles.instructionText}> First, let's register you to vote / confirm your registration! </Text>
             <TouchableOpacity
             	style={styles.cameraButton}
-            	onPress={() => this.props.cam()}>
+            	onPress={() => this.props.cb()}>
             	<Image 
             		source={require('../assets/images/Scan-complete.png')}
             		style={styles.logoImage}
