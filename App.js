@@ -39,9 +39,6 @@ export default class App extends React.Component {
           {this.state.appStatus === "VERIFY" &&
             <VerifyScreen cb={this.hideVerifyScreen.bind(this)} />
           }
-          {this.state.appStatus === "MAIN" &&
-            <AppNavigator />
-          }
           {this.state.appStatus === "CAMERA" &&
             <View style={{ flex: 1 }}>
               <Camera style={{ flex: 1 }} ref={ref => {this.camera = ref; }} type={this.state.type}>
@@ -76,6 +73,9 @@ export default class App extends React.Component {
                 </View>
               </Camera>
             </View>
+          }
+          {this.state.appStatus === "MAIN" &&
+            <AppNavigator />
           }
         </View>
       );
