@@ -5,6 +5,7 @@ import AppNavigator from './navigation/AppNavigator';
 import IntroScreen from './screens/IntroScreen';
 import VerifyScreen from './screens/RegIntro';
 import ConfirmInfo from './screens/ConfirmInfo';
+import Registered from './screens/Registered'
 
 export default class App extends React.Component {
   
@@ -32,9 +33,13 @@ export default class App extends React.Component {
 
   hideConfirm() {
     this.setState({
+      appStatus: "REGISTERED"
+    })
+  }
+  hideRegistered() {
+    this.setState({
       appStatus: "MAIN"
     })
-
   }
   render() {
       return (
@@ -89,6 +94,9 @@ export default class App extends React.Component {
           }
           {this.state.appStatus === "CONFIRM" &&
             <ConfirmInfo cb={this.hideConfirm.bind(this)} />
+          }
+          {this.state.appStatus === "REGISTERED" &&
+            <Registered cb={this.hideRegistered.bind(this)} />
           }
           {this.state.appStatus === "MAIN" &&
             <AppNavigator />

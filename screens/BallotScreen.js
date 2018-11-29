@@ -14,12 +14,7 @@ import { MonoText } from '../components/StyledText';
 
 export default class BallotScreen extends React.Component {
   static navigationOptions = {
-    title: 'Confirm Info                                                                           hello',
-    headerTitle: ({ style, children : title }) => {
-  return (
-    <Text style={style} numberOfLines={2}>{title}</Text>
-  )
-},
+    title: 'voting',
   };
 
   render() {
