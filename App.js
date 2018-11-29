@@ -4,6 +4,7 @@ import { AppLoading, Asset, Font, Icon, Camera } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import IntroScreen from './screens/IntroScreen';
 import VerifyScreen from './screens/RegIntro';
+import ConfirmInfo from './screens/ConfirmInfo';
 
 export default class App extends React.Component {
   
@@ -25,10 +26,16 @@ export default class App extends React.Component {
 
   snap() {
     this.setState({
-      appStatus: "MAIN"
+      appStatus: "CONFIRM"
     })
   }
 
+  hideConfirm() {
+    this.setState({
+      appStatus: "MAIN"
+    })
+
+  }
   render() {
       return (
         <View style={styles.container}>
@@ -46,16 +53,20 @@ export default class App extends React.Component {
                   style={{
                     backgroundColor: 'transparent',
                   }}>
+                  <Text style={styles.instructionTextTop}> Scan your ID </Text>
+                  <Text style={styles.instructionTextBottom}> to see if you're registered </Text>
+                  
                   <TouchableOpacity
                     style={{
-                      alignItems: 'center',
-                      backgroundColor: 'purple',
+                      marginTop: 475,
+                      backgroundColor: '#66257D',
                       borderColor: 'white',
                       borderRadius: 10,
-                      width: 180,
-                      height: 60,
-                      marginTop: 600,
-                      marginLeft: 100,
+                      width: 250,
+                      marginLeft: 60,
+                      color: 'white',
+                      fontSize: 24,
+                      fontWeight: 'bold',
                       overflow: 'hidden',
                       padding: 12,
                       textAlign:'center',
@@ -63,9 +74,11 @@ export default class App extends React.Component {
                     onPress={this.snap.bind(this)}>
                     <Text
                       style={{
-                        color: 'white',
-                        fontSize: 26,
-                        fontWeight: 'bold',
+                        fontSize: 22,
+                        color: '#fff',
+                        lineHeight: 30,
+                        textAlign: 'center',
+                        fontFamily: 'Charter',
                       }}>
                       {' '}Scan ID{' '}
                     </Text>
@@ -73,6 +86,9 @@ export default class App extends React.Component {
                 </View>
               </Camera>
             </View>
+          }
+          {this.state.appStatus === "CONFIRM" &&
+            <ConfirmInfo cb={this.hideConfirm.bind(this)} />
           }
           {this.state.appStatus === "MAIN" &&
             <AppNavigator />
@@ -87,4 +103,36 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   }, 
+  instructionTextTop: {
+      fontSize: 25,
+      lineHeight: 30,
+      textAlign: 'center',
+      fontFamily: 'Charter-Bold',
+      color: '#fff',
+      marginTop: 110,
+      textShadowColor: '#66257D',
+      textShadowOffset: {width: -1, height: 1},
+      textShadowRadius: 10,
+  },
+  instructionTextBottom: {
+      fontSize: 25,
+      lineHeight: 30,
+      textAlign: 'center',
+      fontFamily: 'Charter',
+      color: '#fff',
+      textShadowColor: '#66257D',
+      textShadowOffset: {width: -1, height: 1},
+      textShadowRadius: 10,
+  },
+  logoImage: {
+      width: 300,
+      height: 160,
+      resizeMode: 'contain',
+      marginLeft: -5,
+  },
+  logoContainer: {
+      alignItems: 'center',
+      marginTop: 100,
+      marginBottom: 75,
+  },  
 });

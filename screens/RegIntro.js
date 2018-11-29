@@ -16,10 +16,18 @@ export default class IntroScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  enterInfo() {
+    this.setState({
+      appStatus: "CONFIRM"
+    })
+  }
+
   render() {
     return (
         <View style={styles.container}>
-          <Text style={styles.instructionText}> First, let's register you to vote / confirm your registration! </Text>
+          <Text style={styles.instructionTextTop}> Scan your ID </Text>
+          <Text style={styles.instructionTextBottom}> to see if you're registered </Text>
             <TouchableOpacity
               style={styles.cameraButton}
               onPress={() => this.props.cb()}>
@@ -31,7 +39,7 @@ export default class IntroScreen extends React.Component {
 
           <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.cb()}>
+              onPress={() => this.props.enterInfo()}>
               <Text style={styles.buttonText}> Fill out form instead </Text>
           </TouchableOpacity>
 
@@ -42,7 +50,7 @@ export default class IntroScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      paddingTop: 80,
+      paddingTop: 0,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
@@ -53,17 +61,25 @@ const styles = StyleSheet.create({
       resizeMode: 'contain',
       marginTop: -180,
   },
-  instructionText: {
-      fontSize: 30,
-      color: 'rgba(96,100,109, 1)',
-      lineHeight: 40,
+  instructionTextTop: {
+      fontSize: 25,
+      lineHeight: 30,
       textAlign: 'center',
-      marginBottom: 20,
+      fontFamily: 'Charter-Bold',
+      color: '#66257D',
+  },
+  instructionTextBottom: {
+      fontSize: 25,
+      lineHeight: 30,
+      textAlign: 'center',
+      fontFamily: 'Charter',
+      color: '#66257D',
+      marginBottom: 40,
   },
   cameraButton: {
     backgroundColor: '#fff',
     paddingTop: 180,
-    marginBottom: 60,
+    marginBottom: 55,
     shadowColor: '#303838',
     shadowOffset: { width: 0, height: 10 },
     shadowRadius: 10,
@@ -74,13 +90,14 @@ const styles = StyleSheet.create({
 
   },
   buttonText: {
-      fontSize: 30,
+      fontSize: 22,
       color: '#fff',
-      lineHeight: 40,
+      lineHeight: 30,
       textAlign: 'center',
+      fontFamily: 'Charter',
   },
   button: {
-      backgroundColor: 'purple',
+      backgroundColor: '#66257D',
       borderColor: 'white',
       borderRadius: 10,
       color: 'white',
@@ -89,5 +106,6 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
+      width: 250,
   },
 });

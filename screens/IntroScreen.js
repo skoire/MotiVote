@@ -26,15 +26,15 @@ export default class IntroScreen extends React.Component {
             />
         </View>
 
-        <Text style={styles.missionText}> Voting Made</Text>
-        <Text style={styles.missionText}> Simple & Social </Text>
+        <Text style={styles.missionTextTop}> Voting Made</Text>
+        <Text style={styles.missionTextBottom}> Simple & Social </Text>
 
 
 
         <TouchableOpacity
             style={styles.button}
             onPress={() => this.props.cb()}>
-            <Text style={styles.buttonText}> Lets get Started! </Text>
+            <Text style={styles.buttonText}> Get Started! </Text>
         </TouchableOpacity>
 
       </View>
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
       alignItems: 'center',
-      marginTop: 200,
-      marginBottom: 25,
+      marginTop: 100,
+      marginBottom: 75,
   },
   logoImage: {
       width: 300,
@@ -60,23 +60,34 @@ const styles = StyleSheet.create({
       resizeMode: 'contain',
       marginLeft: -5,
   },
-  missionText: {
+  missionTextTop: {
       fontSize: 30,
       color: 'rgba(96,100,109, 1)',
       lineHeight: 40,
       textAlign: 'center',
+      fontFamily: 'Charter',
+      color: '#66257D',
   },
-  buttonText: {
+  missionTextBottom: {
       fontSize: 30,
-      color: '#fff',
+      color: 'rgba(96,100,109, 1)',
       lineHeight: 40,
       textAlign: 'center',
+      fontFamily: 'Charter-Bold',
+      color: '#66257D',
+  },
+  buttonText: {
+      fontSize: 25,
+      color: '#fff',
+      lineHeight: 30,
+      textAlign: 'center',
+      fontFamily: 'Charter',
   },
   button: {
-    marginTop: 75,
-      backgroundColor: 'purple',
+    marginTop: 150,
+      backgroundColor: '#66257D',
       borderColor: 'white',
-      borderRadius: 75,
+      borderRadius: 10,
       width: 250,
       marginLeft: 60,
       color: 'white',
