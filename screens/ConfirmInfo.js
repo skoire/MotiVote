@@ -16,7 +16,7 @@ import { MonoText } from '../components/StyledText';
 export default class IntroScreen extends React.Component {
   static navigationOptions = {
     header: null,
-  };
+  }; 
   render() {
     return (
         <View style={styles.container}>
