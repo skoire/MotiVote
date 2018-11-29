@@ -50,7 +50,7 @@ export default class IntroScreen extends React.Component {
 
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => this.props.cb_2()}>
+                onPress={() => this.props.cb()}>
                 <Text style={styles.buttonText}> Confirm </Text>
               </TouchableOpacity>
             </ScrollView> 

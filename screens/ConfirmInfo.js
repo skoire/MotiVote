@@ -24,27 +24,24 @@ export default class IntroScreen extends React.Component {
         	<Text style={styles.Header}> Confirm Info </Text>
         	<Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.Label}> First name </Text>
-                <TextInput style={styles.textInput} placeholder = "Armando" />
-              </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.Label}> Last name </Text>
-                <TextInput style={styles.textInput} placeholder = "Martinez" />
-              </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.Label}> DOB </Text>
-                <TextInput style={styles.textInput} placeholder = "01/01/1998" />
-              </View>
-              
-              <TextInput style={styles.textInput} placeholder = "First name" />
-              <TextInput style={styles.textInput} placeholder = "Last name" />
-              <TextInput style={styles.textInput} placeholder = "DOB" />
-              <TextInput style={styles.textInput} placeholder = "Address Line 1" />
-              <TextInput style={styles.textInput} placeholder = "Address Line 2" />
-              <TextInput style={styles.textInput} placeholder = "City" />
-              <TextInput style={styles.textInput} placeholder = "State" />
-              <TextInput style={styles.textInput} placeholder = "Email Address" />
+              <Text style={styles.Label}> First name: </Text>
+              <TextInput style={styles.textInput} defaultValue = "Armando" />
+              <Text style={styles.Label}> Last name: </Text>
+              <TextInput style={styles.textInput} defaultValue = "Martinez" />
+              <Text style={styles.Label}> DOB: </Text>
+              <TextInput style={styles.textInput} defaultValue = "10/21/1997" />
+              <Text style={styles.Label}> Address Line 1: </Text>
+              <TextInput style={styles.textInput} defaultValue = "123 45th St" />
+              <Text style={styles.Label}> Address Line 2 (optional): </Text>
+              <TextInput style={styles.textInput} defaultValue = "" />
+              <Text style={styles.Label}> City: </Text>
+              <TextInput style={styles.textInput} defaultValue = "Palo Alto" />
+              <Text style={styles.Label}> State: </Text>
+              <TextInput style={styles.textInput} defaultValue = "CA" />
+              <Text style={styles.Label}> Driver's License #: </Text>
+              <TextInput style={styles.textInput} defaultValue = "1639582" />
+              <Text style={styles.Label}> Political Party (optional): </Text>
+              <TextInput style={styles.textInput} defaultValue = "" />
 
               <TouchableOpacity
                 style={styles.button}
@@ -69,36 +66,33 @@ const styles = StyleSheet.create({
       color: '#66257D',
       lineHeight: 40,
       textAlign: 'left',
-      marginLeft: 16,
-      marginBottom: 0,
+      marginLeft: 13,
       fontFamily: 'Charter-Bold',
   },
   Label: {
       paddingTop: 5,
-      fontSize: 25,
-      lineHeight: 25,
+      fontSize: 18,
+      lineHeight: 20,
       textAlign: 'left',
       marginLeft: 20,
-      marginBottom: 0,
       fontFamily: 'Charter',
   },
   SubHeader:{
   	  textAlign: 'left',
-      marginLeft: 23,
+      marginLeft: 20,
       fontSize: 17,
-      lineHeight: 20,
+      lineHeight: 17,
       fontFamily: 'Charter',
-      marginBottom: 15,
   },
   textInput: {
   	  alignSelf: 'stretch',
   	  fontSize: 25,
       height: 28,
-      marginBottom: 30,
+      marginBottom: 20,
       color: 'rgba(96,100,109, 1)',
       borderBottomColor: '#D3D3D3',
       borderBottomWidth: 2,
-      marginLeft: 10,
+      marginLeft: 23,
       marginRight: 30,
       fontFamily: 'Charter',
   },
