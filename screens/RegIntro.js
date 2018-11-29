@@ -17,12 +17,6 @@ export default class IntroScreen extends React.Component {
     header: null,
   };
 
-  enterInfo() {
-    this.setState({
-      appStatus: "CONFIRM"
-    })
-  }
-
   render() {
     return (
         <View style={styles.container}>
@@ -39,7 +33,7 @@ export default class IntroScreen extends React.Component {
 
           <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.enterInfo()}>
+              onPress={() => this.props.cb_2()}>
               <Text style={styles.buttonText}> Fill out form instead </Text>
           </TouchableOpacity>
 

@@ -44,7 +44,7 @@ export default class App extends React.Component {
             <IntroScreen cb={this.hideIntroScreen.bind(this)} />
           }
           {this.state.appStatus === "VERIFY" &&
-            <VerifyScreen cb={this.hideVerifyScreen.bind(this)} />
+            <VerifyScreen cb={this.hideVerifyScreen.bind(this)} cb_2={this.snap.bind(this)} />
           }
           {this.state.appStatus === "CAMERA" &&
             <View style={{ flex: 1 }}>
