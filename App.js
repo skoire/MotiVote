@@ -3,7 +3,7 @@ import { Platform, StatusBar, StyleSheet, Text, View, TouchableOpacity } from 'r
 import { AppLoading, Asset, Font, Icon, Camera } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import IntroScreen from './screens/IntroScreen';
-import VerifyScreen from './screens/RegIntro';
+import VerifyScreen from './screens/VerifyScreen';
 import ConfirmInfo from './screens/ConfirmInfo';
 import Registered from './screens/Registered'
 import ConfirmInfoBlank from './screens/ConfirmInfoBlank';
