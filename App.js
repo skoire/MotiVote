@@ -5,6 +5,7 @@ import AppNavigator from './navigation/AppNavigator';
 import IntroScreen from './screens/IntroScreen';
 import VerifyScreen from './screens/VerifyScreen';
 import ConfirmInfo from './screens/ConfirmInfo';
+import ConfirmInfoBlank from './screens/ConfirmInfoBlank'
 import Registered from './screens/Registered';
 import { AsyncStorage } from "react-native";
 
@@ -24,6 +25,12 @@ export default class App extends React.Component {
   hideVerifyScreen() {
     this.setState({
       appStatus: "CAMERA"
+    })
+  }
+
+ emptyForm() {
+    this.setState({
+      appStatus: "EMPTYFORM"
     })
   }
 
@@ -54,7 +61,7 @@ export default class App extends React.Component {
             <IntroScreen cb={this.hideIntroScreen.bind(this)} />
           }
           {this.state.appStatus === "VERIFY" &&
-            <VerifyScreen cb={this.hideVerifyScreen.bind(this)} cb_2={this.snap.bind(this)} />
+            <VerifyScreen cb={this.hideVerifyScreen.bind(this)} cb_2={this.emptyForm.bind(this)} />
           }
           {this.state.appStatus === "CAMERA" &&
             <View style={{ flex: 1 }}>
@@ -96,6 +103,9 @@ export default class App extends React.Component {
                 </View>
               </Camera>
             </View>
+          }
+          {this.state.appStatus === "EMPTYFORM" &&
+            <ConfirmInfoBlank cb={this.hideConfirm.bind(this)} cb_2={this.hideIntroScreen.bind(this)}/>
           }
           {this.state.appStatus === "CONFIRM" &&
             <ConfirmInfo cb={this.hideConfirm.bind(this)} />
