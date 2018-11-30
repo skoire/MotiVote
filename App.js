@@ -5,8 +5,8 @@ import AppNavigator from './navigation/AppNavigator';
 import IntroScreen from './screens/IntroScreen';
 import VerifyScreen from './screens/VerifyScreen';
 import ConfirmInfo from './screens/ConfirmInfo';
-import Registered from './screens/Registered'
-import ConfirmInfoBlank from './screens/ConfirmInfoBlank';
+import Registered from './screens/Registered';
+import { AsyncStorage } from "react-native";
 
 
 export default class App extends React.Component {
@@ -20,16 +20,13 @@ export default class App extends React.Component {
       appStatus: "VERIFY"
     })
   }
+
   hideVerifyScreen() {
     this.setState({
       appStatus: "CAMERA"
     })
   }
-  confirmBlank() {
-    this.setState({
-      appStatus: "BLANK"
-    })
-  }
+
   snap() {
     this.setState({
       appStatus: "CONFIRM"
@@ -41,11 +38,14 @@ export default class App extends React.Component {
       appStatus: "REGISTERED"
     })
   }
+
   hideRegistered() {
     this.setState({
       appStatus: "MAIN"
     })
   }
+
+
   render() {
       return (
         <View style={styles.container}>
@@ -54,7 +54,7 @@ export default class App extends React.Component {
             <IntroScreen cb={this.hideIntroScreen.bind(this)} />
           }
           {this.state.appStatus === "VERIFY" &&
-            <VerifyScreen cb={this.hideVerifyScreen.bind(this)} cb_2={this.confirmBlank.bind(this)} />
+            <VerifyScreen cb={this.hideVerifyScreen.bind(this)} cb_2={this.snap.bind(this)} />
           }
           {this.state.appStatus === "CAMERA" &&
             <View style={{ flex: 1 }}>
@@ -99,9 +99,6 @@ export default class App extends React.Component {
           }
           {this.state.appStatus === "CONFIRM" &&
             <ConfirmInfo cb={this.hideConfirm.bind(this)} />
-          }
-          {this.state.appStatus === "BLANK" &&
-            <ConfirmInfoBlank cb={this.hideConfirm.bind(this)} cb_2={this.hideIntroScreen.bind(this)} />
           }
           {this.state.appStatus === "REGISTERED" &&
             <Registered cb={this.hideRegistered.bind(this)} />
