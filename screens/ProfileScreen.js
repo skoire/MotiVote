@@ -15,6 +15,9 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 //TODO: Re-enable "Edit" button
+//TODO: Allow editing once edit button has been selected
+//TODO: Change location of edit button 
+
 
 export default class IntroScreen extends React.Component {
   static navigationOptions = {
@@ -27,11 +30,11 @@ export default class IntroScreen extends React.Component {
           <Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
               <Text style={styles.Label}> First Name: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "Armando" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "Emma" />
               <Text style={styles.Label}> Last Name: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "Martinez" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "Dolan" />
               <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} editable={false} keyboardType='numbers-and-punctuation' defaultValue = "10/21/1997" />
+              <TextInput style={styles.textInput} editable={false} keyboardType='numbers-and-punctuation' defaultValue = "02/25/1998" />
               <Text style={styles.Label}> Address Line 1: </Text>
               <TextInput style={styles.textInput} editable={false} defaultValue = "123 45th St" />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>

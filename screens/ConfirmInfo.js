@@ -28,11 +28,11 @@ export default class IntroScreen extends React.Component {
         	<Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
               <Text style={styles.Label}> First Name: </Text>
-              <TextInput style={styles.textInput} defaultValue = "Armando" />
+              <TextInput style={styles.textInput} defaultValue = "Emma" />
               <Text style={styles.Label}> Last Name: </Text>
-              <TextInput style={styles.textInput} defaultValue = "Martinez" />
+              <TextInput style={styles.textInput} defaultValue = "Dolan" />
               <Text style={styles.Label}> Date of Birth: </Text>
-              <TextInput style={styles.textInput} keyboardType='numbers-and-punctuation' defaultValue = "10/21/1997" />
+              <TextInput style={styles.textInput} keyboardType='numbers-and-punctuation' defaultValue = "02/25/1998" />
               <Text style={styles.Label}> Address Line 1: </Text>
               <TextInput style={styles.textInput} defaultValue = "123 45th St" />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>
