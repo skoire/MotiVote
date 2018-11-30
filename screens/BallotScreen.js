@@ -12,6 +12,8 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+//TODO: back button on camera 
+
 export default class BallotScreen extends React.Component {
   static navigationOptions = {
     title: 'voting',

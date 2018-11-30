@@ -21,37 +21,32 @@ export default class IntroScreen extends React.Component {
   render() {
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-          <TouchableOpacity
-                  style={styles.backButton}
-                  onPress={() => this.props.cb_2()}>
-                  <Text style={styles.backButtonText}> {'<'} </Text>
-                </TouchableOpacity>
           <Text style={styles.Header}> Confirm Info </Text>
           <Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
-              <Text style={styles.Label}> First name: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> Last name: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <Text style={styles.Label}> First Name: </Text>
+              <TextInput style={styles.textInput} defaultValue = "Armando" />
+              <Text style={styles.Label}> Last Name: </Text>
+              <TextInput style={styles.textInput} defaultValue = "Martinez" />
               <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <TextInput style={styles.textInput} defaultValue = "10/21/1997" />
               <Text style={styles.Label}> Address Line 1: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <TextInput style={styles.textInput} defaultValue = "123 45th St" />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <TextInput style={styles.textInput} defaultValue = "" />
               <Text style={styles.Label}> City: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <TextInput style={styles.textInput} defaultValue = "Palo Alto" />
               <Text style={styles.Label}> State: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <TextInput style={styles.textInput} defaultValue = "CA" />
               <Text style={styles.Label}> Driver's License #: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <TextInput style={styles.textInput} defaultValue = "1639582" />
               <Text style={styles.Label}> Political Party (optional): </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <TextInput style={styles.textInput} defaultValue = "" />
 
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => this.props.cb_2()}>
-                <Text style={styles.buttonText}> Confirm </Text>
+                onPress={() => this.props.cb()}>
+                <Text style={styles.buttonText}> Edit </Text>
               </TouchableOpacity>
             </ScrollView> 
         </KeyboardAvoidingView>
@@ -66,7 +61,7 @@ const styles = StyleSheet.create({
   },
   
   Header: {
-      paddingTop: 10,
+      paddingTop: 35,
       fontSize: 35,
       color: '#66257D',
       lineHeight: 40,
@@ -80,7 +75,6 @@ const styles = StyleSheet.create({
       lineHeight: 20,
       textAlign: 'left',
       marginLeft: 20,
-      marginBottom: 0,
       fontFamily: 'Charter',
   },
   SubHeader:{
@@ -110,7 +104,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter',
   },
   button: {
-      marginTop: 5,
+    marginTop: 5,
       backgroundColor: '#66257D',
       borderColor: 'white',
       borderRadius: 10,
@@ -123,26 +117,5 @@ const styles = StyleSheet.create({
       padding: 12,
       textAlign:'center',
       marginBottom: 100,
-  },
-  backButton: {
-      marginTop: 10,
-      backgroundColor: '#66257D',
-      borderColor: 'white',
-      borderRadius: 10,
-      marginLeft: 15,
-      color: 'white',
-      fontSize: 10,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      padding: 8,
-      width: 75,
-  },
-  backButtonText: {
-      fontSize: 20,
-      color: '#fff',
-      lineHeight: 20,
-      textAlign: 'center',
-      fontFamily: 'Charter',
-      marginLeft: -9,
   },
 });

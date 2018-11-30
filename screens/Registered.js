@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
       width: 200,
       height: 75,
       resizeMode: 'contain',
+      marginLeft: 8,
   },
   instructionTextTop: {
       fontSize: 40,
