@@ -24,9 +24,9 @@ export default class IntroScreen extends React.Component {
         	<Text style={styles.Header}> Confirm Info </Text>
         	<Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
-              <Text style={styles.Label}> First name: </Text>
+              <Text style={styles.Label}> First Name: </Text>
               <TextInput style={styles.textInput} defaultValue = "Armando" />
-              <Text style={styles.Label}> Last name: </Text>
+              <Text style={styles.Label}> Last Name: </Text>
               <TextInput style={styles.textInput} defaultValue = "Martinez" />
               <Text style={styles.Label}> DOB: </Text>
               <TextInput style={styles.textInput} defaultValue = "10/21/1997" />
@@ -119,3 +119,129 @@ const styles = StyleSheet.create({
       marginBottom: 100,
   },
 });
+// import React, { Component } from 'react';
+// import {
+//   Image,
+//   Platform,
+//   ScrollView,
+//   StyleSheet,
+//   Text,
+//   TextInput,
+//   TouchableOpacity,
+//   View,
+//   KeyboardAvoidingView,
+//   Button,
+// } from 'react-native';
+
+// import t from 'tcomb-form-native';
+
+// const Form = t.form.Form;
+
+// const User = t.struct({
+//   first: t.String,
+//   last: t.String,
+//   dob: t.String,
+//   address1: t.String,
+//   address2: t.maybe(t.String),
+//   city: t.String,
+//   state: t.String,
+//   dl: t.String,
+//   party: t.maybe(t.String),
+// });
+
+// const formStyles = {
+//   ...Form.stylesheet,
+//   formGroup: {
+//     normal: {
+//       marginBottom: 10
+//     },
+//   },
+//   controlLabel: {
+//     normal: {
+//       color: 'blue',
+//       fontSize: 18,
+//       marginBottom: 7,
+//       fontWeight: '600'
+//     },
+//     // the style applied when a validation error occours
+//     error: {
+//       color: 'red',
+//       fontSize: 18,
+//       marginBottom: 7,
+//       fontWeight: '600'
+//     }
+//   }
+// }
+
+// const options = {
+//   fields: {
+//     first: {
+//       label: 'First Name:',
+//       error: 'Without an email address how are you going to reset your password when you forget it?'
+//     },
+//     last: {
+//       label: 'Last Name:',
+//       error: 'Without an email address how are you going to reset your password when you forget it?'
+//     },
+//     dob: {
+//       label: 'Date of Birth:',
+//       error: 'Without an email address how are you going to reset your password when you forget it?'
+//     },
+//     address1: {
+//       label: 'Address Line 1:',
+//       error: 'Without an email address how are you going to reset your password when you forget it?'
+//     },
+//     address2: {
+//       label: 'Address Line 2:',
+//     },
+//     city: {
+//       label: 'City:',
+//       error: 'Without an email address how are you going to reset your password when you forget it?'
+//     },
+//     state: {
+//       label: 'State:',
+//       error: 'Without an email address how are you going to reset your password when you forget it?'
+//     },
+//     dl: {
+//       label: 'Drivers License:',
+//       error: 'Without an email address how are you going to reset your password when you forget it?'
+//     },
+//     party: {
+//       label: 'Political Party:',
+//     },
+//   },
+//   stylesheet: formStyles,
+// };
+
+// export default class App extends Component {
+//   handleSubmit = () => {
+//     const value = this._form.getValue();
+//     console.log('value: ', value);
+//   }
+  
+//   render() {
+//     return (
+//       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+//         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
+//           <Form 
+//             ref={c => this._form = c}
+//             type={User} 
+//             options={options}
+//           />
+//           <Button
+//             title="Sign Up!"
+//             onPress={this.handleSubmit}
+//           />
+//       </ScrollView>
+//     </KeyboardAvoidingView>  
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//       flex: 1,
+//       backgroundColor: '#fff',
+//       paddingTop: 30,
+//   },
+// });

@@ -29,9 +29,9 @@ export default class IntroScreen extends React.Component {
           <Text style={styles.Header}> Confirm Info </Text>
           <Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
-              <Text style={styles.Label}> First name: </Text>
+              <Text style={styles.Label}> First Name: </Text>
               <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> Last name: </Text>
+              <Text style={styles.Label}> Last Name: </Text>
               <TextInput style={styles.textInput} placeholder = "" />
               <Text style={styles.Label}> DOB: </Text>
               <TextInput style={styles.textInput} placeholder = "" />
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
       marginBottom: 100,
   },
   backButton: {
-      marginTop: 10,
+      marginTop: 15,
       backgroundColor: '#66257D',
       borderColor: 'white',
       borderRadius: 10,
