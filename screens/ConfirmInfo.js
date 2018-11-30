@@ -14,6 +14,9 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+//TODO: if DOB is blank, put in TextInputMask (see line below)
+//<TextInputMask style={styles.textInput} type={'datetime'} options={{ format: 'DD/MM/YYYY' }} keyboardType='numeric' placeholder = "mm/dd/yyyy" />
+
 export default class IntroScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -28,8 +31,8 @@ export default class IntroScreen extends React.Component {
               <TextInput style={styles.textInput} defaultValue = "Armando" />
               <Text style={styles.Label}> Last Name: </Text>
               <TextInput style={styles.textInput} defaultValue = "Martinez" />
-              <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} defaultValue = "10/21/1997" />
+              <Text style={styles.Label}> Date of Birth: </Text>
+              <TextInput style={styles.textInput} keyboardType='numbers-and-punctuation' defaultValue = "10/21/1997" />
               <Text style={styles.Label}> Address Line 1: </Text>
               <TextInput style={styles.textInput} defaultValue = "123 45th St" />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>
@@ -39,7 +42,7 @@ export default class IntroScreen extends React.Component {
               <Text style={styles.Label}> State: </Text>
               <TextInput style={styles.textInput} defaultValue = "CA" />
               <Text style={styles.Label}> Driver's License #: </Text>
-              <TextInput style={styles.textInput} defaultValue = "1639582" />
+              <TextInput style={styles.textInput} defaultValue = "A1639582" />
               <Text style={styles.Label}> Political Party (optional): </Text>
               <TextInput style={styles.textInput} defaultValue = "" />
 

@@ -11,6 +11,8 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import { TextInputMask } from 'react-native-masked-text'
+
 
 import { MonoText } from '../components/StyledText';
 
@@ -33,8 +35,8 @@ export default class IntroScreen extends React.Component {
               <TextInput style={styles.textInput} placeholder = "" />
               <Text style={styles.Label}> Last Name: </Text>
               <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
+              <Text style={styles.Label}> Date of Birth: </Text>
+              <TextInputMask style={styles.textInput} type={'datetime'} options={{ format: 'DD/MM/YYYY' }} keyboardType='numeric' placeholder = "mm/dd/yyyy" />
               <Text style={styles.Label}> Address Line 1: </Text>
               <TextInput style={styles.textInput} placeholder = "" />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>

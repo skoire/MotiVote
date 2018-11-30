@@ -14,6 +14,8 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+//TODO: Re-enable "Edit" button
+
 export default class IntroScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -25,25 +27,26 @@ export default class IntroScreen extends React.Component {
           <Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
               <Text style={styles.Label}> First Name: </Text>
-              <TextInput style={styles.textInput} defaultValue = "Armando" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "Armando" />
               <Text style={styles.Label}> Last Name: </Text>
-              <TextInput style={styles.textInput} defaultValue = "Martinez" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "Martinez" />
               <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} defaultValue = "10/21/1997" />
+              <TextInput style={styles.textInput} editable={false} keyboardType='numbers-and-punctuation' defaultValue = "10/21/1997" />
               <Text style={styles.Label}> Address Line 1: </Text>
-              <TextInput style={styles.textInput} defaultValue = "123 45th St" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "123 45th St" />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>
-              <TextInput style={styles.textInput} defaultValue = "" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "" />
               <Text style={styles.Label}> City: </Text>
-              <TextInput style={styles.textInput} defaultValue = "Palo Alto" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "Palo Alto" />
               <Text style={styles.Label}> State: </Text>
-              <TextInput style={styles.textInput} defaultValue = "CA" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "CA" />
               <Text style={styles.Label}> Driver's License #: </Text>
-              <TextInput style={styles.textInput} defaultValue = "1639582" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "1639582" />
               <Text style={styles.Label}> Political Party (optional): </Text>
-              <TextInput style={styles.textInput} defaultValue = "" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = "" />
 
               <TouchableOpacity
+                disabled={true}
                 style={styles.button}
                 onPress={() => this.props.cb()}>
                 <Text style={styles.buttonText}> Edit </Text>
