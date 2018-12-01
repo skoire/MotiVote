@@ -14,7 +14,6 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import { ListItem } from 'react-native-elements'
 
-//TODO: back button on camera 
 
 export default class BallotScreen extends React.Component {
   static navigationOptions = {

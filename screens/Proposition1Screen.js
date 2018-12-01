@@ -15,8 +15,6 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import { ListItem } from 'react-native-elements'
 
-//TODO: back button on camera 
-
 export default class BallotScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -42,24 +40,24 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.Text}> - Authorizes CA to sell $4 billion in bonds </Text>
       <Text style = {styles.Text}> - State pays $170M/yr for 35 yrs </Text>
       <Text style = {styles.Text}> - Doesn't raise taxes </Text>
+      <Text style = {styles.SectionHeader}> How You Plan to Vote </Text>
+
       <Text style = {styles.SectionHeader}> Related Articles </Text>
       <FlatList 
-          data = {[{key: 'Article 1', value: 'https://stackoverflow.com/questions/30540252/display-hyperlink-in-react-native-app'}, 
-            {key: 'Article 2', value: 'two'}, 
-            {key: 'Article 3', value: 'three'}]}
+          data = {[{key: 'Housing Programs and Veterans\' Loans Bond (2018)', value: 'https://ballotpedia.org/California_Proposition_1,_Housing_Programs_and_Veterans%27_Loans_Bond_(2018)'}, 
+            {key: 'A $4 Billion Bond for Housing', value: 'https://elections.calmatters.org/2018/california-ballot-measures/proposition-1-affordable-housing-bond/'}, 
+            {key: 'Endorsements', value: 'https://igs.berkeley.edu/library/election-guides/ballot-measures/november-6-2018/endorsements'}]}
           renderItem = {({item}) => (
-          <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
-            <ListItem 
-            title = {item.key}
-            titleStyle = {styles.TitleFont}
-            chevron = {true} 
-            bottomDivider = {true}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
+              <ListItem 
+              title = {item.key}
+              titleStyle = {styles.TitleFont}
+              chevron = {true} 
+              bottomDivider = {true}
+              />
+            </TouchableOpacity>
           )}
-        />
-
-      
+      />
       </View>
 
     );
@@ -104,6 +102,10 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       marginLeft: 13,
       fontFamily: 'Charter-Bold',
+  },
+    TitleFont:{
+      fontFamily: 'Charter',
+      marginLeft: 11,
   },
   backButton: {
       marginTop: 60,
