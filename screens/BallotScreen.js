@@ -30,10 +30,14 @@ export default class BallotScreen extends React.Component {
       <View style={styles.container} behavior="padding" enabled>
       <Text style = {styles.Header}> Your Ballot </Text>
       <Text style = {styles.SubHeader}> Learn about what's on your ballot </Text> 
+      <Text style = {styles.Title}> California General Election </Text>
+      <Text style = {styles.Title}> Tuesday, November 6, 2018 </Text>
+      <Text style = {styles.Title}> </Text>
 
         <FlatList 
           data = {[{key: 'Propositions', value: '12'}, 
-            {key: 'Senate Race', value: '8'}, 
+            {key: 'Governor', value: '2'},
+            {key: 'Secretary of State', value: '2'}, 
             {key: 'Your Decisions', value: '20'}]}
           renderItem = {({item}) => (
           <TouchableOpacity onPress={this.onPress.bind(this, item.key)}>
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
      SubHeader:{
       textAlign: 'left',
       marginLeft: 20,
-      marginBottom: 20,
+      marginBottom: 30,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
@@ -77,6 +81,12 @@ const styles = StyleSheet.create({
     TitleFont:{
       fontFamily: 'Charter',
       marginLeft: 11,
+  },
+    Title:{
+      fontFamily: 'Charter-Bold',
+      fontSize: 20,
+      color: '#66257D',
+      textAlign: 'center'
   },
   container: {
     paddingTop: 30,
