@@ -14,17 +14,28 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import { ListItem } from 'react-native-elements'
+import RadioGroup from 'react-native-radio-buttons-group';
 
 export default class BallotScreen extends React.Component {
   static navigationOptions = {
     header: null,
   }; 
 
-  onPress = (url) => {
+  _onPress = (url) => {
     WebBrowser.openBrowserAsync(url)
   };
 
+  onPress = data => this.setState({data});
+
+  state = {
+    data: [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}]
+  }
+
   render() {
+
+    let selectedButton = this.state.data.find(e => e.selected == true);
+    selectedButton = selectedButton ? selectedButton.value : this.state.data[0].label;
+
     return (
       <View style={styles.container} behavior="padding" enabled>
       <TouchableOpacity
@@ -34,6 +45,8 @@ export default class BallotScreen extends React.Component {
       </TouchableOpacity>
       <Text style = {styles.Header}> Proposition 1</Text>
       <Text style = {styles.SubHeader}> Funds housing assistance programs </Text> 
+
+      <ScrollView>
       <Text style = {styles.SectionHeader}> Summary </Text>
       <Text style = {styles.Text}> - Funds affordable housing</Text>
       <Text style = {styles.Text}> - Helps low-income residents & veterans </Text>
@@ -42,13 +55,17 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.Text}> - Doesn't raise taxes </Text>
       <Text style = {styles.SectionHeader}> How You Plan to Vote </Text>
 
+      <View style={styles.Radio}>
+      <RadioGroup radioButtons={this.state.data} onPress={this.onPress} />
+      </View>
+
       <Text style = {styles.SectionHeader}> Related Articles </Text>
       <FlatList 
           data = {[{key: 'Housing Programs and Veterans\' Loans Bond (2018)', value: 'https://ballotpedia.org/California_Proposition_1,_Housing_Programs_and_Veterans%27_Loans_Bond_(2018)'}, 
             {key: 'A $4 Billion Bond for Housing', value: 'https://elections.calmatters.org/2018/california-ballot-measures/proposition-1-affordable-housing-bond/'}, 
             {key: 'Endorsements', value: 'https://igs.berkeley.edu/library/election-guides/ballot-measures/november-6-2018/endorsements'}]}
           renderItem = {({item}) => (
-            <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
+            <TouchableOpacity onPress={this._onPress.bind(this, item.value)}>
               <ListItem 
               title = {item.key}
               titleStyle = {styles.TitleFont}
@@ -58,6 +75,7 @@ export default class BallotScreen extends React.Component {
             </TouchableOpacity>
           )}
       />
+      </ScrollView>
       </View>
 
     );
@@ -80,7 +98,7 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       marginLeft: 20,
       marginRight: 20,
-      marginBottom: 20,
+      marginBottom: 0,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
@@ -95,7 +113,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter',
   },
     SectionHeader:{
-      paddingTop: 10,
+      paddingTop: 20,
       marginBottom: 10,
       fontSize: 28,
       color: '#66257D',
@@ -106,6 +124,10 @@ const styles = StyleSheet.create({
     TitleFont:{
       fontFamily: 'Charter',
       marginLeft: 11,
+  },
+  Radio:{
+      marginLeft: 15,
+      alignItems: 'flex-start',
   },
   backButton: {
       marginTop: 60,
