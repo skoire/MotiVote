@@ -45,7 +45,7 @@ export default class BallotScreen extends React.Component {
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}
-           
+          chevron = {true} 
           bottomDivider = {true}
           />
           </TouchableOpacity>

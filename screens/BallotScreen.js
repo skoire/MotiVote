@@ -21,8 +21,8 @@ export default class BallotScreen extends React.Component {
     header: null,
   };
 
-  onPress = () => {
-    this.props.navigation.navigate('Propositions')
+  onPress(screen) {
+    this.props.navigation.navigate(screen)
   };
 
   render() {
@@ -36,11 +36,12 @@ export default class BallotScreen extends React.Component {
             {key: 'Senate Race', value: '8'}, 
             {key: 'Your Decisions', value: '20'}]}
           renderItem = {({item}) => (
-          <TouchableOpacity onPress={this.onPress}>
+          <TouchableOpacity onPress={this.onPress.bind(this, item.key)}>
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}
-          badge={{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: '#66257D' } }} 
+          badge={{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: '#66257D' } }}
+          chevron = {true} 
           bottomDivider = {true}
           />
           </TouchableOpacity>
