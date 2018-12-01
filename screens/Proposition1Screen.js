@@ -21,8 +21,8 @@ export default class BallotScreen extends React.Component {
     header: null,
   }; 
 
-  onPress = (screen) => {
-    this.props.navigation.navigate(screen)
+  onPress = () => {
+    <Text style = {styles.Header}> button was pressed!! </Text>
   };
 
   render() {
@@ -37,11 +37,11 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.SubHeader}> Laws you can vote on directly </Text> 
 
         <FlatList 
-          data = {[{key: 'Proposition 1', value: 'one'}, 
-            {key: 'Proposition 2', value: 'two'}, 
-            {key: 'Proposition 3', value: 'three'}]}
+          data = {[{key: 'Proposition 1'}, 
+            {key: 'Proposition 2'}, 
+            {key: 'Proposition 3'}]}
           renderItem = {({item}) => (
-          <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
+          <TouchableOpacity onPress={this.onPress}>
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}
