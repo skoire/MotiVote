@@ -21,6 +21,10 @@ export default class BallotScreen extends React.Component {
     header: null,
   };
 
+  onPress = () => {
+    <Text style = {styles.Header}> button was pressed!! </Text>
+  };
+
   render() {
     return (
       <View style={styles.container} behavior="padding" enabled>
@@ -31,12 +35,16 @@ export default class BallotScreen extends React.Component {
           data = {[{key: 'Propositions', value: '12'}, 
             {key: 'Senate Race', value: '8'}, 
             {key: 'Your Decisions', value: '20'}]}
-          renderItem = {({item}) => <ListItem 
+          renderItem = {({item}) => (
+          <TouchableOpacity onPress={this.onPress}>
+          <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}
           badge={{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: '#66257D' } }} 
           bottomDivider = {true}
-          />}
+          />
+          </TouchableOpacity>
+          )}
         />
         </View>
 
