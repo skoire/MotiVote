@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   FlatList,
+  Linking,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -21,8 +22,8 @@ export default class BallotScreen extends React.Component {
     header: null,
   }; 
 
-  onPress = () => {
-    <Text style = {styles.Header}> button was pressed!! </Text>
+  onPress = (url) => {
+    WebBrowser.openBrowserAsync(url)
   };
 
   render() {
@@ -31,30 +32,37 @@ export default class BallotScreen extends React.Component {
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => this.props.navigation.goBack()}>
-        <Text style={styles.backButtonText}> {'<'} </Text>
+        <Text style={styles.backButtonText}> {'< Props'} </Text>
       </TouchableOpacity>
-      <Text style = {styles.Header}> Propositions</Text>
-      <Text style = {styles.SubHeader}> Laws you can vote on directly </Text> 
-
-        <FlatList 
-          data = {[{key: 'Proposition 1'}, 
-            {key: 'Proposition 2'}, 
-            {key: 'Proposition 3'}]}
+      <Text style = {styles.Header}> Proposition 1</Text>
+      <Text style = {styles.SubHeader}> Funds housing assistance programs </Text> 
+      <Text style = {styles.SectionHeader}> Summary </Text>
+      <Text style = {styles.Text}> - Funds affordable housing</Text>
+      <Text style = {styles.Text}> - Helps low-income residents & veterans </Text>
+      <Text style = {styles.Text}> - Authorizes CA to sell $4 billion in bonds </Text>
+      <Text style = {styles.Text}> - State pays $170M/yr for 35 yrs </Text>
+      <Text style = {styles.Text}> - Doesn't raise taxes </Text>
+      <Text style = {styles.SectionHeader}> Related Articles </Text>
+      <FlatList 
+          data = {[{key: 'Article 1', value: 'https://stackoverflow.com/questions/30540252/display-hyperlink-in-react-native-app'}, 
+            {key: 'Article 2', value: 'two'}, 
+            {key: 'Article 3', value: 'three'}]}
           renderItem = {({item}) => (
-          <TouchableOpacity onPress={this.onPress}>
-          <ListItem 
-          title = {item.key}
-          titleStyle = {styles.TitleFont}
-          chevron = {true} 
-          bottomDivider = {true}
-          />
+          <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
+            <ListItem 
+            title = {item.key}
+            titleStyle = {styles.TitleFont}
+            chevron = {true} 
+            bottomDivider = {true}
+            />
           </TouchableOpacity>
           )}
         />
-        </View>
+
+      
+      </View>
 
     );
-    // return (
   }
 
   
@@ -73,14 +81,29 @@ const styles = StyleSheet.create({
      SubHeader:{
       textAlign: 'left',
       marginLeft: 20,
+      marginRight: 20,
       marginBottom: 20,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
   },
-    TitleFont:{
+    Text:{
+      textAlign: 'left',
+      marginLeft: 20,
+      marginRight: 20,
+      marginBottom: 5,
+      fontSize: 17,
+      lineHeight: 17,
       fontFamily: 'Charter',
-      marginLeft: 11,
+  },
+    SectionHeader:{
+      paddingTop: 10,
+      marginBottom: 10,
+      fontSize: 28,
+      color: '#66257D',
+      textAlign: 'left',
+      marginLeft: 13,
+      fontFamily: 'Charter-Bold',
   },
   backButton: {
       marginTop: 60,
@@ -93,10 +116,10 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       textAlign: 'center',
       padding: 8,
-      width: 75,
+      width: 95,
   },
   backButtonText: {
-      fontSize: 20,
+      fontSize: 18,
       color: '#fff',
       lineHeight: 20,
       textAlign: 'center',

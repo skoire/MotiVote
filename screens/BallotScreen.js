@@ -54,7 +54,6 @@ export default class BallotScreen extends React.Component {
         </View>
 
     );
-    // return (
   }
 
   

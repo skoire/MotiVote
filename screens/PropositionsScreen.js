@@ -31,7 +31,7 @@ export default class BallotScreen extends React.Component {
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => this.props.navigation.goBack()}>
-        <Text style={styles.backButtonText}> {'<'} </Text>
+        <Text style={styles.backButtonText}> {'< Ballot'} </Text>
       </TouchableOpacity>
       <Text style = {styles.Header}> Propositions</Text>
       <Text style = {styles.SubHeader}> Laws you can vote on directly </Text> 
@@ -42,19 +42,18 @@ export default class BallotScreen extends React.Component {
             {key: 'Proposition 3', value: 'three'}]}
           renderItem = {({item}) => (
           <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
-          <ListItem 
-          title = {item.key}
-          titleStyle = {styles.TitleFont}
-          chevron = {true} 
-          bottomDivider = {true}
-          />
+            <ListItem 
+            title = {item.key}
+            titleStyle = {styles.TitleFont}
+            chevron = {true} 
+            bottomDivider = {true}
+            />
           </TouchableOpacity>
           )}
         />
         </View>
 
     );
-    // return (
   }
 
   
@@ -93,10 +92,10 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       textAlign: 'center',
       padding: 8,
-      width: 75,
+      width: 95,
   },
   backButtonText: {
-      fontSize: 20,
+      fontSize: 18,
       color: '#fff',
       lineHeight: 20,
       textAlign: 'center',
