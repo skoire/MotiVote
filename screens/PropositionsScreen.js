@@ -18,29 +18,29 @@ import { ListItem } from 'react-native-elements'
 
 export default class BallotScreen extends React.Component {
   static navigationOptions = {
-    header: null,
-  };
+    title: 'Your Ballot',
+  }; 
 
   onPress = () => {
-    this.props.navigation.navigate('Propositions')
+    <Text style = {styles.Header}> button was pressed!! </Text>
   };
 
   render() {
     return (
       <View style={styles.container} behavior="padding" enabled>
-      <Text style = {styles.Header}> Your Ballot </Text>
+      <Text style = {styles.Header}> Propositions</Text>
       <Text style = {styles.SubHeader}> Learn about what's on your ballot </Text> 
 
         <FlatList 
-          data = {[{key: 'Propositions', value: '12'}, 
-            {key: 'Senate Race', value: '8'}, 
-            {key: 'Your Decisions', value: '20'}]}
+          data = {[{key: 'Proposition 1'}, 
+            {key: 'Proposition 2'}, 
+            {key: 'Proposition 3'}]}
           renderItem = {({item}) => (
           <TouchableOpacity onPress={this.onPress}>
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}
-          badge={{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: '#66257D' } }} 
+           
           bottomDivider = {true}
           />
           </TouchableOpacity>
@@ -50,32 +50,6 @@ export default class BallotScreen extends React.Component {
 
     );
     // return (
-    //   <View style={styles.container}>
-    //     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-    //       <View style={styles.welcomeContainer}>
-    //         <Image
-    //           source={require('../assets/images/MotiVote-logo.png')}
-    //           style={styles.welcomeImage}
-    //         />
-    //       </View>
-
-    //       <View style={styles.getStartedContainer}>
-    //         {this._maybeRenderDevelopmentModeWarning()}
-
-    //         <Text style={styles.getStartedText}>
-    //           Hello fellow students of Minh-An.
-    //         </Text>
-    //       </View>
-
-    //       <View style={styles.helpContainer}>
-    //         <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-    //           <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-    //         </TouchableOpacity>
-    //       </View>
-    //     </ScrollView>
-
-    //   </View>
-    // );
   }
 
   
@@ -103,9 +77,30 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter',
       marginLeft: 2,
   },
+  backButton: {
+      marginTop: 10,
+      backgroundColor: '#66257D',
+      borderColor: 'white',
+      borderRadius: 10,
+      marginLeft: 15,
+      color: 'white',
+      fontSize: 10,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      padding: 8,
+      width: 75,
+  },
+  backButtonText: {
+      fontSize: 20,
+      color: '#fff',
+      lineHeight: 20,
+      textAlign: 'center',
+      fontFamily: 'Charter',
+      marginLeft: -9,
+  },
   container: {
-    marginTop: 20,
-    padding: 15,
+    marginTop: 0,
+    padding: 0,
     backgroundColor: '#ffffff',
     flex: 1
   },

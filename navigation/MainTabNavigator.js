@@ -4,12 +4,15 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import BallotScreen from '../screens/BallotScreen';
+import PropositionsScreen from '../screens/PropositionsScreen';
 import VotingScreen from '../screens/VotingScreen';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
+
 const BallotStack = createStackNavigator({
   Ballot: BallotScreen,
+  Propositions: PropositionsScreen
 });
 
 BallotStack.navigationOptions = {
