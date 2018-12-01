@@ -50,32 +50,6 @@ export default class BallotScreen extends React.Component {
 
     );
     // return (
-    //   <View style={styles.container}>
-    //     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-    //       <View style={styles.welcomeContainer}>
-    //         <Image
-    //           source={require('../assets/images/MotiVote-logo.png')}
-    //           style={styles.welcomeImage}
-    //         />
-    //       </View>
-
-    //       <View style={styles.getStartedContainer}>
-    //         {this._maybeRenderDevelopmentModeWarning()}
-
-    //         <Text style={styles.getStartedText}>
-    //           Hello fellow students of Minh-An.
-    //         </Text>
-    //       </View>
-
-    //       <View style={styles.helpContainer}>
-    //         <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-    //           <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-    //         </TouchableOpacity>
-    //       </View>
-    //     </ScrollView>
-
-    //   </View>
-    // );
   }
 
   
@@ -83,29 +57,28 @@ export default class BallotScreen extends React.Component {
 
 const styles = StyleSheet.create({
     Header: {
-      paddingTop: 20,
+      paddingTop: 35,
       fontSize: 35,
       color: '#66257D',
       lineHeight: 40,
       textAlign: 'left',
-      marginLeft: 5,
+      marginLeft: 13,
       fontFamily: 'Charter-Bold',
   },
      SubHeader:{
       textAlign: 'left',
+      marginLeft: 20,
+      marginBottom: 20,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
-      marginLeft: 12,
-      marginBottom: 20,
   },
     TitleFont:{
       fontFamily: 'Charter',
-      marginLeft: 2,
+      marginLeft: 11,
   },
   container: {
-    marginTop: 20,
-    padding: 15,
+    paddingTop: 30,
     backgroundColor: '#ffffff',
     flex: 1
   },

@@ -18,7 +18,7 @@ import { ListItem } from 'react-native-elements'
 
 export default class BallotScreen extends React.Component {
   static navigationOptions = {
-    title: 'Your Ballot',
+    header: null,
   }; 
 
   onPress = () => {
@@ -28,8 +28,13 @@ export default class BallotScreen extends React.Component {
   render() {
     return (
       <View style={styles.container} behavior="padding" enabled>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => this.props.navigation.goBack()}>
+        <Text style={styles.backButtonText}> {'<'} </Text>
+      </TouchableOpacity>
       <Text style = {styles.Header}> Propositions</Text>
-      <Text style = {styles.SubHeader}> Learn about what's on your ballot </Text> 
+      <Text style = {styles.SubHeader}> Laws you can vote on directly </Text> 
 
         <FlatList 
           data = {[{key: 'Proposition 1'}, 
@@ -57,28 +62,28 @@ export default class BallotScreen extends React.Component {
 
 const styles = StyleSheet.create({
     Header: {
-      paddingTop: 20,
+      paddingTop: 10,
       fontSize: 35,
       color: '#66257D',
       lineHeight: 40,
       textAlign: 'left',
-      marginLeft: 5,
+      marginLeft: 13,
       fontFamily: 'Charter-Bold',
   },
      SubHeader:{
       textAlign: 'left',
+      marginLeft: 20,
+      marginBottom: 20,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
-      marginLeft: 12,
-      marginBottom: 20,
   },
     TitleFont:{
       fontFamily: 'Charter',
-      marginLeft: 2,
+      marginLeft: 11,
   },
   backButton: {
-      marginTop: 10,
+      marginTop: 60,
       backgroundColor: '#66257D',
       borderColor: 'white',
       borderRadius: 10,
