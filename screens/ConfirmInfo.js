@@ -14,12 +14,18 @@ import {
 
 import t from 'tcomb-form-native';
 
+import moment from 'moment';
+
 const Form = t.form.Form;
+
+Form.stylesheet.dateValue.normal.borderColor = '#d0d2d3';
+Form.stylesheet.dateValue.normal.backgroundColor = '#fff';
+Form.stylesheet.dateValue.normal.borderWidth = 1;
 
 const User = t.struct({
   first: t.String,
   last: t.String,
-  dob: t.String,
+  dob: t.Date,
   address1: t.String,
   address2: t.maybe(t.String),
   city: t.String,
@@ -27,6 +33,16 @@ const User = t.struct({
   dl: t.String,
   party: t.maybe(t.String),
 });
+
+var val = {
+  first: 'Emma',
+  last: 'Dolan',
+  dob: new Date('February 25, 1998'),
+  address1: '123 45th St',
+  city: 'Palo Alto',
+  state: 'CA',
+  dl: 'A126542',
+};
 
 const formStyles = {
   ...Form.stylesheet,
@@ -67,8 +83,14 @@ const options = {
       error: 'Please enter your last name.'
     },
     dob: {
+      type: 'date',
       label: 'Date of Birth:',
-      error: 'Please enter your date of birth.'
+      error: 'Please enter your date of birth.',
+      config: {
+      	format: (date) => moment(date).format('MM/DD/YYYY'), 
+      },
+      mode: 'date',
+      blurOnSubmit: true,
     },
     address1: {
       label: 'Address Line 1:',
@@ -87,7 +109,7 @@ const options = {
     },
     dl: {
       //TODO: add apostrophe to driver's license and #
-      label: 'Drivers License:',
+      label: 'Driver License #:',
       error: 'Please enter your drivers license number.' 
     },
     party: {
@@ -113,6 +135,7 @@ export default class App extends Component {
               ref={c => this._form = c}
               type={User} 
               options={options}
+              value={val}
             />
             <TouchableOpacity
                 style={styles.button}
@@ -151,7 +174,7 @@ const styles = StyleSheet.create({
       lineHeight: 17,
       fontFamily: 'Charter',
       marginLeft: 12,
-      marginBottom: -20,
+      marginBottom: 5,
   },
     buttonText: {
       fontSize: 25,
@@ -173,6 +196,6 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
-      marginBottom: 100,
+      marginBottom: 150,
   },
 });
