@@ -41,7 +41,7 @@ var val = {
   address1: '123 45th St',
   city: 'Palo Alto',
   state: 'CA',
-  //dl: 'A126542',
+  dl: 'A126542',
 };
 
 const formStyles = {
@@ -123,7 +123,14 @@ export default class App extends Component {
   handleSubmit = () => {
     const value = this._form.getValue();
     console.log('value: ', value);
+    if(value){
+    	this.props.cb();
+    }
   }
+  // handleSubmit2 = () => {
+  // 	this.handleSubmit();
+  // 	this.props.cb();
+  // }
   
   render() {
     return (
