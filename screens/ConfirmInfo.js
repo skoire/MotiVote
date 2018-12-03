@@ -139,7 +139,7 @@ export default class App extends Component {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => this.handleSubmit()}>
+                onPress={() => {this.handleSubmit(); this.props.cb()}}>
                 <Text style={styles.buttonText}> Confirm </Text>
               </TouchableOpacity>
         </ScrollView>
