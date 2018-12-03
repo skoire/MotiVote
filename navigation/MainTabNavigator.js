@@ -38,7 +38,7 @@ const VotingStack = createStackNavigator({
   Voting: VotingScreen,
   Join: JoinGroup,
   Create: CreateGroup,
-  Plans: PropositionsScreen,
+  Plans: VotingScreen,
 });
 
 VotingStack.navigationOptions = {
