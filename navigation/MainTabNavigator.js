@@ -7,6 +7,8 @@ import BallotScreen from '../screens/BallotScreen';
 import PropositionsScreen from '../screens/PropositionsScreen';
 import Proposition1Screen from '../screens/Proposition1Screen';
 import VotingScreen from '../screens/VotingScreen';
+import CreateGroup from '../screens/CreateGroup';
+import JoinGroup from '../screens/JoinGroup';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
@@ -30,7 +32,13 @@ BallotStack.navigationOptions = {
 };
 
 const VotingStack = createStackNavigator({
+  //MAYBE WE CAN PUT SOME KIND OF IF HERE WHERE 
+  //IF THE USER HAS MADE PLANS it goes to Voting Screen 
+  //else it goes to confirmed plans screen!!!!!!
   Voting: VotingScreen,
+  Join: JoinGroup,
+  Create: CreateGroup,
+  Plans: PropositionsScreen,
 });
 
 VotingStack.navigationOptions = {

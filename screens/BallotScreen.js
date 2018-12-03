@@ -10,8 +10,6 @@ import {
   FlatList,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
-import { MonoText } from '../components/StyledText';
 import { ListItem } from 'react-native-elements'
 
 
