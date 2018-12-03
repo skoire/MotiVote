@@ -41,7 +41,7 @@ var val = {
   address1: '123 45th St',
   city: 'Palo Alto',
   state: 'CA',
-  dl: 'A126542',
+  //dl: 'A126542',
 };
 
 const formStyles = {
@@ -139,7 +139,7 @@ export default class App extends Component {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => {this.handleSubmit(); this.props.cb()}}>
+                onPress={() => this.handleSubmit()}>
                 <Text style={styles.buttonText}> Confirm </Text>
               </TouchableOpacity>
         </ScrollView>
