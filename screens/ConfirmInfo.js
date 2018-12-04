@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import t from 'tcomb-form-native';
+import * as g from '../global.js';
 
 const Form = t.form.Form;
 
