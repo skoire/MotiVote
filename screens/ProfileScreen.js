@@ -31,23 +31,23 @@ export default class IntroScreen extends React.Component {
           <Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
               <Text style={styles.Label}> First Name: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.firstName}/>
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.first}/>
               <Text style={styles.Label}> Last Name: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.lastName} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.last} />
               <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.dob} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.dob.toLocaleDateString()} />
               <Text style={styles.Label}> Address Line 1: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.addressLine1} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.address1} />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.addressLine2} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.address2} />
               <Text style={styles.Label}> City: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.city} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.city} />
               <Text style={styles.Label}> State: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.state} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.state} />
               <Text style={styles.Label}> Driver's License #: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.driverLicenseNum} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.dl} />
               <Text style={styles.Label}> Political Party (optional): </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = {global.party} />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.party} />
 
               <TouchableOpacity
                 disabled={true}

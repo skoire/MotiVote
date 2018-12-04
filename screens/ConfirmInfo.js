@@ -123,7 +123,8 @@ const options = {
 export default class App extends Component {
   handleSubmit = () => {
     const value = this._form.getValue();
-    console.log('value: ', value);
+    console.log(value);
+    global.userData = value;
     if(value){
     	this.props.cb();
     }
