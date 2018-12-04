@@ -27,7 +27,7 @@ export default class BallotScreen extends React.Component {
   };
 
   onPress = data => {
-    global.prop1Data = data;
+    global.prop2Data = data;
     this.setState({data})
   };
 
@@ -37,13 +37,13 @@ export default class BallotScreen extends React.Component {
 
   constructor (props){
       super(props);
-      if(!global.prop1Data) global.prop1Data = [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}];
+      if(!global.prop2Data) global.prop2Data = [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}];
   }
 
   render() {
 
-    let selectedButton = global.prop1Data.find(e => e.selected == true);
-    selectedButton = selectedButton ? selectedButton.value : global.prop1Data[0].label;
+    let selectedButton = global.prop2Data.find(e => e.selected == true);
+    selectedButton = selectedButton ? selectedButton.value : global.prop2Data[0].label;
 
     return (
       <View style={styles.container} behavior="padding" enabled>
@@ -52,26 +52,28 @@ export default class BallotScreen extends React.Component {
         onPress={() => this.props.navigation.goBack()}>
         <Text style={styles.backButtonText}> {'< Props'} </Text>
       </TouchableOpacity>
-      <Text style = {styles.Header}> Proposition 1</Text>
-      <Text style = {styles.SubHeader}> Funds housing assistance programs </Text> 
+      <Text style = {styles.Header}> Proposition 2</Text>
+      <Text style = {styles.SubHeader}> Funds housing for those with mental illness </Text> 
 
       <ScrollView>
       <Text style = {styles.SectionHeader}> Summary </Text>
-      <Text style = {styles.Text}> - Funds affordable housing</Text>
-      <Text style = {styles.Text}> - Helps low-income residents & veterans </Text>
-      <Text style = {styles.Text}> - Authorizes CA to sell $4 billion in bonds </Text>
-      <Text style = {styles.Text}> - State pays $170M/yr for 35 yrs </Text>
-      <Text style = {styles.Text}> - Doesn't raise taxes </Text>
+      <Text style = {styles.Text1}> - Allows CA to use $140M/yr of </Text>
+      <Text style = {styles.Text2}>   existing county mental health funds</Text>
+      <Text style = {styles.Text1}> - Pays for housing for homeless, mentally ill </Text>
+      <Text style = {styles.Text2}>   people</Text>
+      <Text style = {styles.Text1}> - Doesn’t require those helped to seek </Text>
+      <Text style = {styles.Text2}>   treatment, but offers it</Text>
+      <Text style = {styles.Text1}> - Doesn't raise taxes </Text>
       <Text style = {styles.SectionHeader}> How You Plan to Vote </Text>
 
       <View style={styles.Radio}>
-      <RadioGroup radioButtons={global.prop1Data} onPress={this.onPress} />
+      <RadioGroup radioButtons={global.prop2Data} onPress={this.onPress} />
       </View>
 
       <Text style = {styles.SectionHeader}> Related Articles </Text>
       <FlatList 
-          data = {[{key: 'Housing Programs and Veterans\' Loans Bond (2018)', value: 'https://ballotpedia.org/California_Proposition_1,_Housing_Programs_and_Veterans%27_Loans_Bond_(2018)'}, 
-            {key: 'A $4 Billion Bond for Housing', value: 'https://elections.calmatters.org/2018/california-ballot-measures/proposition-1-affordable-housing-bond/'}, 
+          data = {[{key: 'Use Millionaire\'s Tax Revenue for Homelessness Prevention Housing ', value: 'https://ballotpedia.org/California_Proposition_2,_Use_Millionaire%27s_Tax_Revenue_for_Homelessness_Prevention_Housing_Bonds_Measure_(2018)'}, 
+            {key: 'At Issue Is Housing For 20,000 Mentally Ill Homeless People in California', value: 'http://www.capradio.org/articles/2018/10/18/proposition-2-at-issue-is-housing-for-20000-mentally-ill-homeless-people-in-california/'}, 
             {key: 'Endorsements', value: 'https://igs.berkeley.edu/library/election-guides/ballot-measures/november-6-2018/endorsements'}]}
           renderItem = {({item}) => (
             <TouchableOpacity onPress={this._onPress.bind(this, item.value)}>
@@ -112,7 +114,16 @@ const styles = StyleSheet.create({
       lineHeight: 17,
       fontFamily: 'Charter',
   },
-    Text:{
+    Text1:{
+      textAlign: 'left',
+      marginLeft: 20,
+      marginRight: 20,
+      marginBottom: 0,
+      fontSize: 17,
+      lineHeight: 17,
+      fontFamily: 'Charter',
+  },
+    Text2:{
       textAlign: 'left',
       marginLeft: 20,
       marginRight: 20,

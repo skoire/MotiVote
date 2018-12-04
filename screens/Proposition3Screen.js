@@ -27,7 +27,7 @@ export default class BallotScreen extends React.Component {
   };
 
   onPress = data => {
-    global.prop1Data = data;
+    global.prop3Data = data;
     this.setState({data})
   };
 
@@ -37,13 +37,13 @@ export default class BallotScreen extends React.Component {
 
   constructor (props){
       super(props);
-      if(!global.prop1Data) global.prop1Data = [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}];
+      if(!global.prop3Data) global.prop3Data = [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}];
   }
 
   render() {
 
-    let selectedButton = global.prop1Data.find(e => e.selected == true);
-    selectedButton = selectedButton ? selectedButton.value : global.prop1Data[0].label;
+    let selectedButton = global.prop3Data.find(e => e.selected == true);
+    selectedButton = selectedButton ? selectedButton.value : global.prop3Data[0].label;
 
     return (
       <View style={styles.container} behavior="padding" enabled>
@@ -52,26 +52,28 @@ export default class BallotScreen extends React.Component {
         onPress={() => this.props.navigation.goBack()}>
         <Text style={styles.backButtonText}> {'< Props'} </Text>
       </TouchableOpacity>
-      <Text style = {styles.Header}> Proposition 1</Text>
-      <Text style = {styles.SubHeader}> Funds housing assistance programs </Text> 
+      <Text style = {styles.Header}> Proposition 3</Text>
+      <Text style = {styles.SubHeader}> Funds projects for water supply & quality </Text> 
 
       <ScrollView>
       <Text style = {styles.SectionHeader}> Summary </Text>
-      <Text style = {styles.Text}> - Funds affordable housing</Text>
-      <Text style = {styles.Text}> - Helps low-income residents & veterans </Text>
-      <Text style = {styles.Text}> - Authorizes CA to sell $4 billion in bonds </Text>
-      <Text style = {styles.Text}> - State pays $170M/yr for 35 yrs </Text>
-      <Text style = {styles.Text}> - Doesn't raise taxes </Text>
+      <Text style = {styles.Text1}> - Allows CA to sell $8.9B in bonds</Text>
+      <Text style = {styles.Text1}> - Provides safe drinking water and drought </Text>
+      <Text style = {styles.Text2}>   protection</Text>
+      <Text style = {styles.Text1}> - Repairs unsafe dams </Text>
+      <Text style = {styles.Text1}> - Improves water quality in ocean, bays, & </Text>
+      <Text style = {styles.Text2}>   rivers</Text>
+      <Text style = {styles.Text1}> - Money goes to organizations </Text>
       <Text style = {styles.SectionHeader}> How You Plan to Vote </Text>
 
       <View style={styles.Radio}>
-      <RadioGroup radioButtons={global.prop1Data} onPress={this.onPress} />
+      <RadioGroup radioButtons={global.prop3Data} onPress={this.onPress} />
       </View>
 
       <Text style = {styles.SectionHeader}> Related Articles </Text>
       <FlatList 
-          data = {[{key: 'Housing Programs and Veterans\' Loans Bond (2018)', value: 'https://ballotpedia.org/California_Proposition_1,_Housing_Programs_and_Veterans%27_Loans_Bond_(2018)'}, 
-            {key: 'A $4 Billion Bond for Housing', value: 'https://elections.calmatters.org/2018/california-ballot-measures/proposition-1-affordable-housing-bond/'}, 
+          data = {[{key: 'Water Infrastructure and Watershed Conservation Bond Initiative (2018)', value: 'https://ballotpedia.org/California_Proposition_3,_Water_Infrastructure_and_Watershed_Conservation_Bond_Initiative_(2018)'}, 
+            {key: 'What an $8.9 Billion Water Bond Would Buy', value: 'https://calmatters.org/articles/blog/water-bond-proposition-3/'}, 
             {key: 'Endorsements', value: 'https://igs.berkeley.edu/library/election-guides/ballot-measures/november-6-2018/endorsements'}]}
           renderItem = {({item}) => (
             <TouchableOpacity onPress={this._onPress.bind(this, item.value)}>
@@ -112,7 +114,16 @@ const styles = StyleSheet.create({
       lineHeight: 17,
       fontFamily: 'Charter',
   },
-    Text:{
+    Text1:{
+      textAlign: 'left',
+      marginLeft: 20,
+      marginRight: 20,
+      marginBottom: 0,
+      fontSize: 17,
+      lineHeight: 17,
+      fontFamily: 'Charter',
+  },
+    Text2:{
       textAlign: 'left',
       marginLeft: 20,
       marginRight: 20,
