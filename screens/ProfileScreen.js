@@ -11,13 +11,14 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import PropositionsScreen from "./PropositionsScreen.js";
+import '../global.js';
 
 import { MonoText } from '../components/StyledText';
 
 //TODO: Re-enable "Edit" button
 //TODO: Allow editing once edit button has been selected
-//TODO: Change location of edit button 
-
+//TODO: Change location of edit button
 
 export default class IntroScreen extends React.Component {
   static navigationOptions = {
@@ -30,23 +31,23 @@ export default class IntroScreen extends React.Component {
           <Text style={styles.SubHeader}> See and update your information here </Text>
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
               <Text style={styles.Label}> First Name: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "Emma" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.firstName}/>
               <Text style={styles.Label}> Last Name: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "Dolan" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.userData.lastName} />
               <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} editable={false} keyboardType='numbers-and-punctuation' defaultValue = "02/25/1998" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.dob} />
               <Text style={styles.Label}> Address Line 1: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "123 45th St" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.addressLine1} />
               <Text style={styles.Label}> Address Line 2 (optional): </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.addressLine2} />
               <Text style={styles.Label}> City: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "Palo Alto" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.city} />
               <Text style={styles.Label}> State: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "CA" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.state} />
               <Text style={styles.Label}> Driver's License #: </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "1639582" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.driverLicenseNum} />
               <Text style={styles.Label}> Political Party (optional): </Text>
-              <TextInput style={styles.textInput} editable={false} defaultValue = "" />
+              <TextInput style={styles.textInput} editable={false} defaultValue = {global.party} />
 
               <TouchableOpacity
                 disabled={true}
