@@ -32,12 +32,12 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.Title}> </Text>
 
         <FlatList 
-          data = {[{key: 'Propositions', value: '3'}, 
-            {key: 'Governor', value: '2'},
-            {key: 'Secretary of State', value: '2'}, 
-            {key: 'Your Decisions', value: '7'}]}
+          data = {[{key: 'Propositions', screen: 'Propositions', value: '3'}, 
+            {key: 'Governor', screen: 'Governor', value: '1'},
+            {key: 'Secretary of State', screen: 'Secretary', value: '1'}, 
+            {key: 'Your Decisions', screen: 'Decisions', value: '5'}]}
           renderItem = {({item}) => (
-          <TouchableOpacity onPress={this.onPress.bind(this, item.key)}>
+          <TouchableOpacity onPress={this.onPress.bind(this, item.screen)}>
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}

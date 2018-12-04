@@ -8,6 +8,8 @@ import PropositionsScreen from '../screens/PropositionsScreen';
 import Proposition1Screen from '../screens/Proposition1Screen';
 import Proposition2Screen from '../screens/Proposition2Screen';
 import Proposition3Screen from '../screens/Proposition3Screen';
+import GovernorScreen from '../screens/GovernorScreen';
+import SecretaryScreen from '../screens/SecretaryScreen';
 import VotingScreen from '../screens/VotingScreen';
 import CreateGroup from '../screens/CreateGroup';
 import JoinGroup from '../screens/JoinGroup';
@@ -21,6 +23,9 @@ const BallotStack = createStackNavigator({
   one: Proposition1Screen,
   two: Proposition2Screen,
   three: Proposition3Screen,
+  Governor: GovernorScreen,
+  Secretary: SecretaryScreen,
+  //Decisions:
 });
 
 BallotStack.navigationOptions = {
