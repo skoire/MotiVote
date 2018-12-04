@@ -17,6 +17,7 @@ import { ListItem } from 'react-native-elements'
 import RadioGroup from 'react-native-radio-buttons-group';
 
 export default class BallotScreen extends React.Component {
+
   static navigationOptions = {
     header: null,
   }; 
@@ -25,16 +26,24 @@ export default class BallotScreen extends React.Component {
     WebBrowser.openBrowserAsync(url)
   };
 
-  onPress = data => this.setState({data});
+  onPress = data => {
+    global.propData = data;
+    this.setState({data})
+  };
 
   state = {
     data: [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}]
   }
 
+  constructor (props){
+      super(props);
+      if(!global.propData) global.propData = [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}];
+  }
+
   render() {
 
-    let selectedButton = this.state.data.find(e => e.selected == true);
-    selectedButton = selectedButton ? selectedButton.value : this.state.data[0].label;
+    let selectedButton = global.propData.find(e => e.selected == true);
+    selectedButton = selectedButton ? selectedButton.value : global.propData[0].label;
 
     return (
       <View style={styles.container} behavior="padding" enabled>
@@ -56,7 +65,7 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.SectionHeader}> How You Plan to Vote </Text>
 
       <View style={styles.Radio}>
-      <RadioGroup radioButtons={this.state.data} onPress={this.onPress} />
+      <RadioGroup radioButtons={global.propData} onPress={this.onPress} />
       </View>
 
       <Text style = {styles.SectionHeader}> Related Articles </Text>
