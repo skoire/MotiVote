@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Image,
   Platform,
@@ -9,100 +9,176 @@ import {
   TouchableOpacity,
   View,
   KeyboardAvoidingView,
+  Button,
 } from 'react-native';
-import { WebBrowser } from 'expo';
 
-import { MonoText } from '../components/StyledText';
+import t from 'tcomb-form-native';
 
-export default class IntroScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  }; 
+import moment from 'moment';
+
+const Form = t.form.Form;
+
+Form.stylesheet.dateValue.normal.borderColor = '#d0d2d3';
+Form.stylesheet.dateValue.normal.backgroundColor = '#fff';
+Form.stylesheet.dateValue.normal.borderWidth = 1;
+
+const User = t.struct({
+  first: t.String,
+  last: t.String,
+  dob: t.Date,
+  address1: t.String,
+  address2: t.maybe(t.String),
+  city: t.String,
+  state: t.String,
+  dl: t.String,
+  party: t.maybe(t.String),
+});
+
+var val = {
+  first: '',
+  last: '',
+  //dob: new Date(''),
+  address1: '',
+  city: '',
+  state: '',
+  dl: '',
+};
+
+const formStyles = {
+  ...Form.stylesheet,
+  formGroup: {
+    normal: {
+      marginBottom: 10
+    },
+  },
+  controlLabel: {
+    normal: {
+      paddingTop: 5,
+      fontSize: 21,
+      lineHeight: 23,
+      textAlign: 'left',
+      fontFamily: 'Charter',
+    },
+    // the style applied when a validation error occours
+    error: {
+      paddingTop: 5,
+      fontSize: 21,
+      lineHeight: 23,
+      textAlign: 'left',
+      fontFamily: 'Charter',
+      color: 'black',
+      marginBottom: 7,
+    }
+  }
+}
+
+const options = {
+  fields: {
+    first: {
+      label: 'First Name:',
+      error: 'Please enter your first name.'
+    },
+    last: {
+      label: 'Last Name:',
+      error: 'Please enter your last name.'
+    },
+    dob: {
+      type: 'date',
+      label: 'Date of Birth:',
+      error: 'Please enter your date of birth.',
+      config: {
+        format: (date) => moment(date).format('MM/DD/YYYY'), 
+      },
+      mode: 'date',
+      blurOnSubmit: true,
+    },
+    address1: {
+      label: 'Address Line 1:',
+      error: 'Please enter your street address.'
+    },
+    address2: {
+      label: 'Address Line 2:',
+    },
+    city: {
+      label: 'City:',
+      error: 'Please enter your city.'
+    },
+    state: {
+      label: 'State:',
+      error: 'Please enter your state.'
+    },
+    dl: {
+      //TODO: add apostrophe to driver's license and #
+      label: 'Driver License #:',
+      error: 'Please enter your drivers license number.' 
+    },
+    party: {
+      label: 'Political Party:',
+    },
+  },
+  stylesheet: formStyles,
+};
+
+export default class App extends Component {
+  handleSubmit = () => {
+    const value = this._form.getValue();
+    console.log('value: ', value);
+    if(value){
+      this.props.cb();
+    }
+  }
   render() {
     return (
-        <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-          <TouchableOpacity
-                  style={styles.backButton}
-                  onPress={() => this.props.cb_2()}>
-                  <Text style={styles.backButtonText}> {'<'} </Text>
-                </TouchableOpacity>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
           <Text style={styles.Header}> Confirm Info </Text>
           <Text style={styles.SubHeader}> See and update your information here </Text>
-            <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}> 
-              <Text style={styles.Label}> First name: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> Last name: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> DOB: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> Address Line 1: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> Address Line 2 (optional): </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> City: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> State: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> Driver's License #: </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-              <Text style={styles.Label}> Political Party (optional): </Text>
-              <TextInput style={styles.textInput} placeholder = "" />
-
-              <TouchableOpacity
+          <ScrollView style={styles.scrollContainer}> 
+            <Form 
+              ref={c => this._form = c}
+              type={User} 
+              options={options}
+              value={val}
+            />
+            <TouchableOpacity
                 style={styles.button}
-                onPress={() => this.props.cb()}>
+                onPress={() => this.handleSubmit()}>
                 <Text style={styles.buttonText}> Confirm </Text>
               </TouchableOpacity>
-            </ScrollView> 
-        </KeyboardAvoidingView>
+        </ScrollView>
+    </KeyboardAvoidingView>  
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      paddingTop: 30,
+    marginTop: 20,
+    padding: 15,
+    backgroundColor: '#ffffff',
   },
-  
-  Header: {
-      paddingTop: 10,
+  scrollContainer: {
+    marginTop: 20,
+    padding: 15,
+    backgroundColor: '#ffffff',
+  },
+    Header: {
+      paddingTop: 20,
       fontSize: 35,
       color: '#66257D',
       lineHeight: 40,
       textAlign: 'left',
-      marginLeft: 13,
+      marginLeft: 5,
       fontFamily: 'Charter-Bold',
   },
-  Label: {
-      paddingTop: 5,
-      fontSize: 18,
-      lineHeight: 20,
+     SubHeader:{
       textAlign: 'left',
-      marginLeft: 20,
-      marginBottom: 0,
-      fontFamily: 'Charter',
-  },
-  SubHeader:{
-      textAlign: 'left',
-      marginLeft: 20,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
+      marginLeft: 12,
+      marginBottom: 5,
   },
-  textInput: {
-      alignSelf: 'stretch',
-      fontSize: 25,
-      height: 28,
-      marginBottom: 20,
-      color: 'rgba(96,100,109, 1)',
-      borderBottomColor: '#D3D3D3',
-      borderBottomWidth: 2,
-      marginLeft: 23,
-      marginRight: 30,
-      fontFamily: 'Charter',
-  },
-  buttonText: {
+    buttonText: {
       fontSize: 25,
       color: '#fff',
       lineHeight: 30,
@@ -115,34 +191,13 @@ const styles = StyleSheet.create({
       borderColor: 'white',
       borderRadius: 10,
       width: 250,
-      marginLeft: 60,
+      marginLeft: 30,
       color: 'white',
       fontSize: 24,
       fontWeight: 'bold',
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
-      marginBottom: 100,
-  },
-  backButton: {
-      marginTop: 10,
-      backgroundColor: '#66257D',
-      borderColor: 'white',
-      borderRadius: 10,
-      marginLeft: 15,
-      color: 'white',
-      fontSize: 10,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      padding: 8,
-      width: 75,
-  },
-  backButtonText: {
-      fontSize: 20,
-      color: '#fff',
-      lineHeight: 20,
-      textAlign: 'center',
-      fontFamily: 'Charter',
-      marginLeft: -9,
+      marginBottom: 150,
   },
 });
