@@ -103,7 +103,6 @@ const options = {
       error: 'Please enter your state.'
     },
     dl: {
-      //TODO: add apostrophe to driver's license and #
       label: 'Driver License #:',
       error: 'Please enter your drivers license number.' 
     },
@@ -118,11 +117,12 @@ export default class App extends Component {
   static navigationOptions = {
     header: null,
   }; 
-  handleSubmit = () => {
+  handleSubmit2 = () => {
     const value = this._form.getValue();
     global.userData = value;
+    console.log(global.userData);
     if(value){
-      //onPress={() => this.props.navigation.navigate('Profile')}>;
+      this.props.navigation.navigate('Profile', {value: global.userData});
     }
   }
   render() {
@@ -144,7 +144,7 @@ export default class App extends Component {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => this.props.navigation.navigate('Profile')}>
+                onPress={() => this.handleSubmit2()}>
                 <Text style={styles.buttonText}> Confirm </Text>
               </TouchableOpacity>
         </ScrollView>

@@ -251,7 +251,7 @@ export default class App extends Component {
   static navigationOptions = {
     header: null,
   }; 
-  
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
