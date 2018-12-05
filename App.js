@@ -8,7 +8,7 @@ import ConfirmInfo from './screens/ConfirmInfo';
 import ConfirmInfoBlank from './screens/ConfirmInfoBlank'
 import Registered from './screens/Registered';
 import { AsyncStorage } from "react-native";
-import global from './global.js';
+
 
 export default class App extends React.Component {
   

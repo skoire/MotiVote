@@ -42,9 +42,6 @@ export default class BallotScreen extends React.Component {
 
   render() {
 
-    let selectedButton = global.secretaryData.find(e => e.selected == true);
-    selectedButton = selectedButton ? selectedButton.value : global.secretaryData[0].label;
-
     return (
       <View style={styles.container} behavior="padding" enabled>
       <TouchableOpacity

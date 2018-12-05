@@ -25,6 +25,36 @@ export default class BallotScreen extends React.Component {
   };
 
   render() {
+    prop1dec = false;
+    try{
+    prop1dec = global.prop1Data.find(e => e.selected == true);
+    } catch {}
+    prop1dec = prop1dec ? prop1dec.label : "Undecided";
+
+    prop2dec = false;
+    try{
+    prop2dec = global.prop2Data.find(e => e.selected == true);
+    } catch {}
+    prop2dec = prop2dec ? prop2dec.label : "Undecided";
+
+    prop3dec = false;
+    try{
+    prop3dec = global.prop3Data.find(e => e.selected == true);
+    } catch {}
+    prop3dec = prop3dec ? prop3dec.label : "Undecided";
+
+    govDec = false;
+    try{
+    govDec = global.governorData.find(e => e.selected == true);
+    } catch {}
+    govDec = govDec ? govDec.label : "Undecided";
+
+    secDec = false;
+    try{
+    secDec = global.secretaryData.find(e => e.selected == true);
+    } catch {}
+    secDec = secDec ? secDec.label : "Undecided";
+
     return (
       <View style={styles.container} behavior="padding" enabled>
       <TouchableOpacity
@@ -35,25 +65,20 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.Header}> Your Decisions</Text>
       <Text style = {styles.SubHeader}> How you plan to vote </Text> 
 
-      //Make the array of decisions!!!!!
-
         <FlatList 
-          data = {[{key: 'Proposition 1', value: 'one', decision: 'a'}, 
-            {key: 'Proposition 2', value: 'two', decision: 'a'}, 
-            {key: 'Proposition 3', value: 'three', decision: 'a'}, 
-            {key: 'Governor', value: 'Governor', decision: 'a'},
-            {key: 'Secretary of State', value: 'Secretary', decision: 'a'}]}
+          data = {[{key: 'Proposition 1', decision: prop1dec}, 
+            {key: 'Proposition 2', decision: prop2dec}, 
+            {key: 'Proposition 3', decision: prop3dec}, 
+            {key: 'Governor', decision: govDec},
+            {key: 'Secretary of State', decision: secDec}]}
           renderItem = {({item}) => (
-          <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
             <ListItem 
             title = {item.key}
             titleStyle = {styles.TitleFont}
             rightTitle = {item.decision}
             rightTitleStyle = {styles.TitleFont}
-            chevron = {true} 
             bottomDivider = {true}
             />
-          </TouchableOpacity>
           )}
         />
         </View>
