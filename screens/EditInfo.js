@@ -16,11 +16,16 @@ import t from 'tcomb-form-native';
 
 import moment from 'moment';
 
+import '../global.js';
+
+//TODO: make information persistent, check the form for completion
+
 const Form = t.form.Form;
 
 Form.stylesheet.dateValue.normal.borderColor = '#d0d2d3';
 Form.stylesheet.dateValue.normal.backgroundColor = '#fff';
 Form.stylesheet.dateValue.normal.borderWidth = 1;
+Form.stylesheet.dateValue.normal.borderRadius = 3;
 
 const User = t.struct({
   first: t.String,
@@ -33,8 +38,6 @@ const User = t.struct({
   dl: t.String,
   party: t.maybe(t.String),
 });
-
-var val = global.userData;
 
 const formStyles = {
   ...Form.stylesheet,
@@ -112,16 +115,24 @@ const options = {
 };
 
 export default class App extends Component {
+  static navigationOptions = {
+    header: null,
+  }; 
   handleSubmit = () => {
     const value = this._form.getValue();
     global.userData = value;
     if(value){
-      this.props.cb();
+      //onPress={() => this.props.navigation.navigate('Profile')}>;
     }
   }
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+      <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => this.props.navigation.goBack()}>
+          <Text style={styles.backButtonText}> {'< Profile'} </Text>
+        </TouchableOpacity>
           <Text style={styles.Header}> Confirm Info </Text>
           <Text style={styles.SubHeader}> See and update your information here </Text>
           <ScrollView style={styles.scrollContainer}> 
@@ -129,11 +140,11 @@ export default class App extends Component {
               ref={c => this._form = c}
               type={User} 
               options={options}
-              value={val}
+              value={global.userData}
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => this.handleSubmit()}>
+                onPress={() => this.props.navigation.navigate('Profile')}>
                 <Text style={styles.buttonText}> Confirm </Text>
               </TouchableOpacity>
         </ScrollView>
@@ -144,13 +155,15 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
-    padding: 15,
+    flex: 1,
+    marginTop: 0,
+    paddingLeft: 15,
+    paddingRight: 15,
     backgroundColor: '#ffffff',
   },
   scrollContainer: {
-    marginTop: 20,
-    padding: 15,
+    marginTop: 10,
+    padding: 10,
     backgroundColor: '#ffffff',
   },
     Header: {
@@ -159,7 +172,7 @@ const styles = StyleSheet.create({
       color: '#66257D',
       lineHeight: 40,
       textAlign: 'left',
-      marginLeft: 5,
+      marginLeft: 0,
       fontFamily: 'Charter-Bold',
   },
      SubHeader:{
@@ -167,7 +180,7 @@ const styles = StyleSheet.create({
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
-      marginLeft: 12,
+      marginLeft: 8,
       marginBottom: 5,
   },
     buttonText: {
@@ -190,6 +203,27 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
-      marginBottom: 150,
+      marginBottom: 75,
+  },
+  backButton: {
+      marginTop: 60,
+      backgroundColor: '#66257D',
+      borderColor: 'white',
+      borderRadius: 10,
+      marginLeft: 15,
+      color: 'white',
+      fontSize: 10,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      padding: 8,
+      width: 95,
+  },
+  backButtonText: {
+      fontSize: 18,
+      color: '#fff',
+      lineHeight: 20,
+      textAlign: 'center',
+      fontFamily: 'Charter',
+      marginLeft: -9,
   },
 });
