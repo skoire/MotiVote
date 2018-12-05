@@ -17,10 +17,12 @@ export default class VotingScreen extends React.Component {
     header: null,
   };
 
-  onPress(screen) {
-    if(screen == 'Start your own group!') {
+  onPress(group, time) {
+    if(group == 'Start your own group!') {
       this.props.navigation.navigate('Create')
     } else {
+      global.group = group
+      global.time = time
       this.props.navigation.navigate('Join')
     }
   };
@@ -45,7 +47,7 @@ export default class VotingScreen extends React.Component {
           renderItem = {({item}) => (
             //the on press button needs to store the key/value pair picked into the global variable sheet
             //if picked a group, go to join group screen and populate with 
-          <TouchableOpacity onPress={this.onPress.bind(this, item.key)}>
+          <TouchableOpacity onPress={this.onPress.bind(this, item.key, item.value)}>
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}

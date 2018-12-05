@@ -32,12 +32,18 @@ export default class BallotScreen extends React.Component {
         <Text style = {styles.Header}> Voting Plans</Text>
         <Text style = {styles.SubHeader}> Join friends at the poll </Text> 
 
-        <Text style = {styles.SubHeader}> put info here ofwhat time they're going & where, and save this value </Text>
+        <Text style = {styles.SubHeader1}> Who:      {global.group} </Text>
+        <Text style = {styles.SubHeader1}> When:    {global.time} </Text>
+        <Text style = {styles.SubHeader2}> Where:   Your Polling Location</Text>
+        <Text style = {styles.SubHeader2}>                Palo Alto Fire Station # 05</Text>
+        <Text style = {styles.SubHeader2}>                600 Arastradero Rd</Text>
+        <Text style = {styles.SubHeader2}>                Palo Alto, CA 94306</Text>
+        
         <TouchableOpacity
-                style={styles.button}
-                onPress={() => this.props.navigation.navigate('Plans')}>
-                <Text style={styles.buttonText}> Confirm </Text>
-              </TouchableOpacity>
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('Voting')}>
+          <Text style={styles.buttonText}> Join Group </Text>
+        </TouchableOpacity>
         </View>
 
     );
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
      SubHeader:{
       textAlign: 'left',
       marginLeft: 20,
-      marginBottom: 20,
+      marginBottom: 40,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
@@ -67,6 +73,20 @@ const styles = StyleSheet.create({
     TitleFont:{
       fontFamily: 'Charter',
       marginLeft: 11,
+  },
+    SubHeader1:{
+      textAlign: 'left',
+      marginLeft: 20,
+      marginBottom: 30,
+      fontSize: 20,
+      fontFamily: 'Charter',
+  },
+     SubHeader2:{
+      textAlign: 'left',
+      marginLeft: 20,
+      marginBottom: 10,
+      fontSize: 20,
+      fontFamily: 'Charter',
   },
   backButton: {
       marginTop: 60,
@@ -97,19 +117,18 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter',
   },
   button: {
-      marginTop: 5,
       backgroundColor: '#66257D',
       borderColor: 'white',
       borderRadius: 10,
-      width: 250,
-      marginLeft: 30,
       color: 'white',
       fontSize: 24,
       fontWeight: 'bold',
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
-      marginBottom: 150,
+      width: 250,
+      marginLeft: 55,
+      marginTop: 200,
   },
   container: {
     marginTop: 0,
