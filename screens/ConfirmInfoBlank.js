@@ -82,6 +82,7 @@ const options = {
       label: 'Last Name:',
       error: 'Please enter your last name.'
     },
+    //TODO "Tap here..."
     dob: {
       type: 'date',
       label: 'Date of Birth:',
@@ -130,20 +131,25 @@ export default class App extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-          <Text style={styles.Header}> Confirm Info </Text>
-          <Text style={styles.SubHeader}> See and update your information here </Text>
-          <ScrollView style={styles.scrollContainer}> 
-            <Form 
-              ref={c => this._form = c}
-              type={User} 
-              options={options}
-              value={val}
-            />
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => this.handleSubmit()}>
-                <Text style={styles.buttonText}> Confirm </Text>
-              </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => this.props.cb_2()}>
+          <Text style={styles.backButtonText}> {'<'} </Text>
+        </TouchableOpacity>
+        <Text style={styles.Header}> Confirm Info </Text>
+        <Text style={styles.SubHeader}> See and update your information here </Text>
+        <ScrollView style={styles.scrollContainer}> 
+          <Form 
+            ref={c => this._form = c}
+            type={User} 
+            options={options}
+            value={val}
+          />
+          <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.handleSubmit()}>
+              <Text style={styles.buttonText}> Confirm </Text>
+            </TouchableOpacity>
         </ScrollView>
     </KeyboardAvoidingView>  
     );
@@ -198,6 +204,27 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
-      marginBottom: 150,
+      marginBottom: 200,
+  },
+  backButton: {
+      marginTop: 10,
+      backgroundColor: '#66257D',
+      borderColor: 'white',
+      borderRadius: 10,
+      marginLeft: 15,
+      color: 'white',
+      fontSize: 10,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      padding: 8,
+      width: 75,
+  },
+  backButtonText: {
+      fontSize: 20,
+      color: '#fff',
+      lineHeight: 20,
+      textAlign: 'center',
+      fontFamily: 'Charter',
+      marginLeft: -9,
   },
 });
