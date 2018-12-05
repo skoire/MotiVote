@@ -22,6 +22,7 @@ export default class IntroScreen extends React.Component {
         <View style={styles.container}>
           <Text style={styles.instructionTextTop}> Scan your ID </Text>
           <Text style={styles.instructionTextBottom}> to see if you're registered </Text>
+          <Text style={styles.cameraText}> Press the camera icon below to scan your ID! </Text>
             <TouchableOpacity
               style={styles.cameraButton}
               onPress={() => this.props.cb()}>
@@ -68,7 +69,15 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontFamily: 'Charter',
       color: '#66257D',
-      marginBottom: 40,
+      marginBottom: 10,
+  },
+  cameraText: {
+      fontSize: 16,
+      lineHeight: 20,
+      textAlign: 'center',
+      fontFamily: 'Charter',
+      color: '#66257D',
+      marginBottom: 20,
   },
   cameraButton: {
     backgroundColor: '#fff',

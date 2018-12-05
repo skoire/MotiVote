@@ -27,7 +27,7 @@ export default class BallotScreen extends React.Component {
   };
 
   onPress = data => {
-    global.prop1Data = data;
+    global.secretaryData = data;
     this.setState({data})
   };
 
@@ -37,42 +37,55 @@ export default class BallotScreen extends React.Component {
 
   constructor (props){
       super(props);
-      if(!global.prop1Data) global.prop1Data = [{label: 'Undecided', color: '#66257D'}, {label: 'Yes', color: '#66257D'}, {label: 'No', color: '#66257D'}];
+      if(!global.secretaryData) global.secretaryData = [{label: 'Undecided', color: '#66257D'}, {label: 'Alex Padilla', color: '#66257D'}, {label: 'Mark P. Meuser', color: '#66257D'}];
   }
 
   render() {
 
-    let selectedButton = global.prop1Data.find(e => e.selected == true);
-    selectedButton = selectedButton ? selectedButton.value : global.prop1Data[0].label;
+    let selectedButton = global.secretaryData.find(e => e.selected == true);
+    selectedButton = selectedButton ? selectedButton.value : global.secretaryData[0].label;
 
     return (
       <View style={styles.container} behavior="padding" enabled>
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => this.props.navigation.goBack()}>
-        <Text style={styles.backButtonText}> {'< Props'} </Text>
+        <Text style={styles.backButtonText}> {'< Ballot'} </Text>
       </TouchableOpacity>
-      <Text style = {styles.Header}> Proposition 1</Text>
-      <Text style = {styles.SubHeader}> Funds housing assistance programs </Text> 
+      <Text style = {styles.Header}> Secretary of State</Text>
+      <Text style = {styles.SubHeader}> Elected state executive officer </Text> 
 
       <ScrollView>
-      <Text style = {styles.SectionHeader}> Summary </Text>
-      <Text style = {styles.Text}> - Funds affordable housing</Text>
-      <Text style = {styles.Text}> - Helps low-income residents & veterans </Text>
-      <Text style = {styles.Text}> - Authorizes CA to sell $4 billion in bonds </Text>
-      <Text style = {styles.Text}> - State pays $170M/yr for 35 yrs </Text>
-      <Text style = {styles.Text}> - Doesn't raise taxes </Text>
-      <Text style = {styles.SectionHeader}> How You Plan to Vote </Text>
+      <Text style = {styles.SectionHeader}> What's the Role? </Text>
+      <Text style = {styles.Text1}> - Keeps CA's key documents </Text>
+      <Text style = {styles.Text1}> - Registers businesses in CA</Text>
+      <Text style = {styles.Text1}> - Commissions notaries public</Text>
+      <Text style = {styles.Text1}> - Manages state ballot initiatives</Text>
+      <Text style = {styles.Text1}> - 4-year term</Text>
 
+
+      <Text style = {styles.SectionHeader}> Who are the Candiates? </Text>
+      <Text style = {styles.Text}> Alex Padilla (Incumbent)</Text>
+      <Text style = {styles.Text1}>     - Democrat </Text>
+      <Text style = {styles.Text1}>     - 2015 - Present: CA Secretary of State</Text>
+      <Text style = {styles.Text1}>     - 2006 - 2014: CA Senate District 20</Text>
+      <Text style = {styles.Text1}>     - Member of National Association of</Text>
+      <Text style = {styles.Text2}>       Latino Elected and Appointed Officials</Text>
+
+      <Text style = {styles.Text}> Mark P. Meuser </Text>
+      <Text style = {styles.Text1}>     - Republican </Text>
+      <Text style = {styles.Text1}>     - 2016: CA Senate District 7 Candidate</Text>
+      <Text style = {styles.Text1}>     - Civil Litigation Attorney</Text>
+
+      <Text style = {styles.SectionHeader}> How You Plan to Vote </Text>
       <View style={styles.Radio}>
-      <RadioGroup radioButtons={global.prop1Data} onPress={this.onPress} />
+      <RadioGroup radioButtons={global.secretaryData} onPress={this.onPress} />
       </View>
 
       <Text style = {styles.SectionHeader}> Related Articles </Text>
       <FlatList 
-          data = {[{key: 'Housing Programs and Veterans\' Loans Bond (2018)', value: 'https://ballotpedia.org/California_Proposition_1,_Housing_Programs_and_Veterans%27_Loans_Bond_(2018)'}, 
-            {key: 'A $4 Billion Bond for Housing', value: 'https://elections.calmatters.org/2018/california-ballot-measures/proposition-1-affordable-housing-bond/'}, 
-            {key: 'Endorsements', value: 'https://igs.berkeley.edu/library/election-guides/ballot-measures/november-6-2018/endorsements'}]}
+          data = {[{key: 'Alex Padilla, Mark Meuser Run for California Secretary of State', value: 'http://www.dailycal.org/2018/10/17/alex-padilla-mark-meuser-run-for-california-secretary-of-state/'}, 
+            {key: 'Secretary of State — State of California', value: 'https://votersedge.org/en/ca/ballot/election/area/69/contests/contest/16572?id=statewide-69-ca'}]}
           renderItem = {({item}) => (
             <TouchableOpacity onPress={this._onPress.bind(this, item.value)}>
               <ListItem 
@@ -113,6 +126,25 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter',
   },
     Text:{
+      textAlign: 'left',
+      marginLeft: 20,
+      marginRight: 20,
+      marginBottom: 5,
+      marginTop: 5,
+      fontSize: 17,
+      lineHeight: 17,
+      fontFamily: 'Charter-Bold',
+  },
+    Text1:{
+      textAlign: 'left',
+      marginLeft: 20,
+      marginRight: 20,
+      marginBottom: 0,
+      fontSize: 17,
+      lineHeight: 17,
+      fontFamily: 'Charter',
+  },
+    Text2:{
       textAlign: 'left',
       marginLeft: 20,
       marginRight: 20,

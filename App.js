@@ -72,7 +72,7 @@ export default class App extends React.Component {
                   }}>
                   <Text style={styles.instructionTextTop}> Scan your ID </Text>
                   <Text style={styles.instructionTextBottom}> to see if you're registered </Text>
-                  
+
                   <TouchableOpacity
                     style={{
                       marginTop: 475,
