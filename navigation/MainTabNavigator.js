@@ -16,7 +16,7 @@ import CreateGroup from '../screens/CreateGroup';
 import JoinGroup from '../screens/JoinGroup';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-
+import EditInfo from '../screens/EditInfo';
 
 const BallotStack = createStackNavigator({
   Ballot: BallotScreen,
@@ -77,6 +77,7 @@ AchievementsStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen,
+  Edit: EditInfo,
 });
 
 ProfileStack.navigationOptions = {
