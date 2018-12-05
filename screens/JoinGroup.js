@@ -41,7 +41,7 @@ export default class BallotScreen extends React.Component {
         
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('Voting')}>
+          onPress={() => this.props.navigation.navigate('Plans')}>
           <Text style={styles.buttonText}> Join Group </Text>
         </TouchableOpacity>
         </View>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
       textAlign:'center',
       width: 250,
       marginLeft: 55,
-      marginTop: 200,
+      marginTop: 170,
   },
   container: {
     marginTop: 0,

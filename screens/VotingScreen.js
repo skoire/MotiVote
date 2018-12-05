@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { ListItem } from 'react-native-elements'
 
-
 export default class VotingScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -37,6 +36,8 @@ export default class VotingScreen extends React.Component {
       <Text style = {styles.Title}> </Text>
       <Text style = {styles.Title2}> Tuesday, November 6, 2018 </Text>
       <Text style = {styles.Title}> </Text>
+      <Text style = {styles.Title}>  Group: {global.group} </Text>
+      <Text style = {styles.Title}> Time: {global.time} </Text>
 
       <FlatList 
           data = {[

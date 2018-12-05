@@ -193,11 +193,22 @@ const options = {
   stylesheet: formStyles,
 };
 
+
 export default class App extends Component {
   
   static navigationOptions = {
     header: null,
   }; 
+
+  submit = () => {
+    value = this._form.getValue();
+    time = value.meetTime;
+    global.time = moment(time).format('hh:mm A').toString();
+    console.log(global.time)
+    global.group = "You";
+    this.props.navigation.navigate('Voting', {value: global.time});
+  }
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
@@ -208,21 +219,23 @@ export default class App extends Component {
         </TouchableOpacity>
         <Text style = {styles.Header}> Voting Plans</Text>
         <Text style = {styles.SubHeader}> Let friends join you at the poll </Text> 
-        
-        <ScrollView style={styles.scrollContainer}> 
           <Form 
             ref={c => this._form = c}
             type={User} 
             options={options}
             value={val}
           />
-          <TouchableOpacity
+          <Text style = {styles.TitleFont}>Your Polling Location:</Text>
+          <Text style = {styles.SubHeader2}> Palo Alto Fire Station # 05</Text>
+          <Text style = {styles.SubHeader2}> 600 Arastradero Rd</Text>
+          <Text style = {styles.SubHeader2}> Palo Alto, CA 94306</Text>  
+
+        <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate('Plans')}>
+              onPress = { () => this.submit()}>
               <Text style={styles.buttonText}> Confirm </Text>
-            </TouchableOpacity>
-        </ScrollView>
-    </KeyboardAvoidingView>  
+        </TouchableOpacity>  
+    </KeyboardAvoidingView> 
     );
   }
 }
@@ -251,14 +264,23 @@ const styles = StyleSheet.create({
      SubHeader:{
       textAlign: 'left',
       marginLeft: -5,
-      marginBottom: 20,
+      marginBottom: 40,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
   },
+  SubHeader2:{
+      textAlign: 'left',
+      marginBottom: 0,
+      fontSize: 17,
+  },
   TitleFont:{
+      paddingTop: 15,
+      marginBottom: 8,
+      fontSize: 21,
+      lineHeight: 23,
+      textAlign: 'left',
       fontFamily: 'Charter',
-      marginLeft: 11,
   },
     buttonText: {
       fontSize: 25,
@@ -268,7 +290,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter',
   },
   button: {
-      marginTop: 10,
+      marginTop: 50,
       backgroundColor: '#66257D',
       borderColor: 'white',
       borderRadius: 10,
@@ -281,6 +303,20 @@ const styles = StyleSheet.create({
       padding: 12,
       textAlign:'center',
       marginBottom: 200,
+  },
+  button1: {
+      backgroundColor: '#66257D',
+      borderColor: 'white',
+      borderRadius: 10,
+      color: 'white',
+      fontSize: 24,
+      fontWeight: 'bold',
+      overflow: 'hidden',
+      padding: 12,
+      textAlign:'center',
+      width: 250,
+      marginLeft: 55,
+      marginTop: 200,
   },
   backButton: {
       marginTop: 20,

@@ -42,9 +42,6 @@ BallotStack.navigationOptions = {
 };
 
 const VotingStack = createStackNavigator({
-  //MAYBE WE CAN PUT SOME KIND OF IF HERE WHERE 
-  //IF THE USER HAS MADE PLANS it goes to Voting Screen 
-  //else it goes to confirmed plans screen!!!!!!
   Voting: VotingScreen,
   Join: JoinGroup,
   Create: CreateGroup,
