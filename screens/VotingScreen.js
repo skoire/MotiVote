@@ -29,7 +29,7 @@ export default class VotingScreen extends React.Component {
   };
 
   render() {
-    groupStatus = global.group === undefined ? 'You are not in a group!': 'Your Group: ' + global.group
+    groupStatus = global.group === undefined ? 'You are not in a group yet!': 'Your Group: ' + global.group
     timeStatus = global.time === undefined ? '': 'Meeting Time:  ' + global.time
 
 
@@ -37,10 +37,11 @@ export default class VotingScreen extends React.Component {
       <View style={styles.container} behavior="padding" enabled>
       <Text style = {styles.Header}> Voting Plans </Text>
       <Text style = {styles.SubHeader}> Form or join a group to go to the polls with </Text> 
-      <Text style = {styles.Title}> Your Friends at </Text>
-      <Text style = {styles.Title}> Your Polling Location! </Text>
+      <Text style = {styles.SubHeader}> Your Friends at Your Polling Location!</Text>
       <Text style = {styles.Title}> </Text>
+      <Text style = {styles.Title2}> Your next election is </Text>
       <Text style = {styles.Title2}> Tuesday, November 6, 2018 </Text>
+
       <Text style = {styles.Title}> </Text>
       <Text style = {styles.yourGroup}> {groupStatus} </Text>
       <Text style = {styles.yourTime}> {timeStatus} </Text>
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
      SubHeader:{
       textAlign: 'left',
       marginLeft: 20,
-      marginBottom: 30,
+      marginBottom: 3,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
@@ -107,14 +108,14 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter-Bold',
       fontSize: 25,
       textAlign: 'center',
-      marginTop: 20,
+      marginTop: 12,
       marginBottom: 10
   },
   yourTime:{
       fontFamily: 'Charter-Bold',
       fontSize: 25,
       textAlign: 'center',
-      marginBottom: 30
+      marginBottom: 10
   },
     Title2:{
       fontFamily: 'Charter-Bold',
