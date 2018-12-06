@@ -14,9 +14,24 @@ import { ListItem } from 'react-native-elements'
 
 
 export default class BallotScreen extends React.Component {
+  isFocused() {
+    this.forceUpdate();
+  }
+
+  componentDidMount() {
+    this.subs = [
+      this.props.navigation.addListener('didFocus', () => this.isFocused()),
+    ];
+  }
+
+  componentWillUnmount() {
+    this.subs.forEach(sub => sub.remove());
+  }
+
   static navigationOptions = {
     header: null,
   };
+
 
   onPress(screen) {
     this.props.navigation.navigate(screen)

@@ -20,36 +20,50 @@ export default class BallotScreen extends React.Component {
     header: null,
   }; 
 
-  render() {
-    return (
-      <View style={styles.container} behavior="padding" enabled>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => this.props.navigation.goBack()}>
-          <Text style={styles.backButtonText}> {'< Voting'} </Text>
-        </TouchableOpacity>
-        
-        <Text style = {styles.Header}> Voting Plans</Text>
-        <Text style = {styles.SubHeader}> Join friends at the poll </Text> 
 
-        <Text style = {styles.SubHeader1}> Who:      {global.group} </Text>
-        <Text style = {styles.SubHeader1}> When:    {global.time} </Text>
-        <Text style = {styles.SubHeader2}> Where:   Your Polling Location</Text>
-        <Text style = {styles.SubHeader2}>                Palo Alto Fire Station # 05</Text>
-        <Text style = {styles.SubHeader2}>                600 Arastradero Rd</Text>
-        <Text style = {styles.SubHeader2}>                Palo Alto, CA 94306</Text>
-        
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('Voting', {value: global.time})}>
-          <Text style={styles.buttonText}> Join Group </Text>
-        </TouchableOpacity>
-        </View>
 
+onPress(status) {
+  if(status === 'Leave Group') {
+    global.group = undefined;
+    global.time = undefined;
+    global.inGroup = false;
+  } else {
+    global.group = 'Joe, Ed';
+    global.time = '3:45 PM';
+    global.inGroup = true;
+  }
+  this.props.navigation.navigate('Voting', {value: global.time})
+}; 
+
+render() {
+  global.inGroup = global.inGroup === undefined ? false: global.inGroup
+  buttonStatus = global.inGroup === true && global.group === 'Joe, Ed'? 'Leave Group': 'Join Group'
+  return (
+    <View style={styles.container} behavior="padding" enabled>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => this.props.navigation.navigate('Voting')}>
+        <Text style={styles.backButtonText}> {'< Voting'} </Text>
+      </TouchableOpacity>
+      
+      <Text style = {styles.Header}> Voting Plans</Text>
+      <Text style = {styles.SubHeader}> Join friends at the poll </Text> 
+
+      <Text style = {styles.SubHeader1}> Who:       Joe, Ed </Text>
+      <Text style = {styles.SubHeader1}> When:     3:45 PM </Text>
+      <Text style = {styles.SubHeader2}> Where:   Your Polling Location</Text>
+      <Text style = {styles.SubHeader2}>                Palo Alto Fire Station # 05</Text>
+      <Text style = {styles.SubHeader2}>                600 Arastradero Rd</Text>
+      <Text style = {styles.SubHeader2}>                Palo Alto, CA 94306</Text>
+      
+      <TouchableOpacity
+        style={styles.button}
+        onPress={this.onPress.bind(this, buttonStatus)}>
+        <Text style={styles.buttonText}> {buttonStatus} </Text>
+      </TouchableOpacity>
+      </View>
     );
   }
-
-  
 }
 
 const styles = StyleSheet.create({

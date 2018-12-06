@@ -17,16 +17,22 @@ export default class VotingScreen extends React.Component {
   };
 
   onPress(group, time) {
-    if(group == 'Start your own group!') {
+    if(group === 'Start your own group!') {
       this.props.navigation.navigate('Create')
-    } else {
-      global.group = group
-      global.time = time
-      this.props.navigation.navigate('Join')
+    } else if (group === 'Sami, Armando') {
+      this.props.navigation.navigate('Join1')
+    } else if (group === 'Elizabeth') {
+      this.props.navigation.navigate('Join2')
+    } else if (group === 'Joe, Ed') {
+      this.props.navigation.navigate('Join3')
     }
   };
 
   render() {
+    groupStatus = global.group === undefined ? 'You are not in a group!': 'Your Group: ' + global.group
+    timeStatus = global.time === undefined ? '': 'Meeting Time:  ' + global.time
+
+
     return (
       <View style={styles.container} behavior="padding" enabled>
       <Text style = {styles.Header}> Voting Plans </Text>
@@ -36,8 +42,8 @@ export default class VotingScreen extends React.Component {
       <Text style = {styles.Title}> </Text>
       <Text style = {styles.Title2}> Tuesday, November 6, 2018 </Text>
       <Text style = {styles.Title}> </Text>
-      <Text style = {styles.Title}>  Group: {global.group} </Text>
-      <Text style = {styles.Title}> Time: {global.time} </Text>
+      <Text style = {styles.yourGroup}> {groupStatus} </Text>
+      <Text style = {styles.yourTime}> {timeStatus} </Text>
 
       <FlatList 
           data = {[
@@ -50,14 +56,14 @@ export default class VotingScreen extends React.Component {
             //if picked a group, go to join group screen and populate with 
           <TouchableOpacity onPress={this.onPress.bind(this, item.key, item.value)}>
           <ListItem 
-          title = {item.key}
-          titleStyle = {styles.TitleFont}
-          rightTitle = {item.value}
-          rightTitleStyle = {styles.TitleFont}
-          
-          chevron = {true} 
-          bottomDivider = {true}
-          />
+            title = {item.key}
+            titleStyle = {styles.TitleFont}
+            rightTitle = {item.value}
+            rightTitleStyle = {styles.TitleFont}
+            
+            chevron = {true} 
+            bottomDivider = {true}
+            />
           </TouchableOpacity>
           )}
         />
@@ -96,6 +102,19 @@ const styles = StyleSheet.create({
       fontFamily: 'Charter',
       fontSize: 20,
       textAlign: 'center'
+  },
+  yourGroup:{
+      fontFamily: 'Charter-Bold',
+      fontSize: 25,
+      textAlign: 'center',
+      marginTop: 20,
+      marginBottom: 10
+  },
+  yourTime:{
+      fontFamily: 'Charter-Bold',
+      fontSize: 25,
+      textAlign: 'center',
+      marginBottom: 30
   },
     Title2:{
       fontFamily: 'Charter-Bold',

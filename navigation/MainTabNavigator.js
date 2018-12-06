@@ -13,10 +13,14 @@ import SecretaryScreen from '../screens/SecretaryScreen';
 import DecisionsScreen from '../screens/DecisionsScreen';
 import VotingScreen from '../screens/VotingScreen';
 import CreateGroup from '../screens/CreateGroup';
-import JoinGroup from '../screens/JoinGroup';
+import JoinGroup1 from '../screens/JoinGroup1';
+import JoinGroup2 from '../screens/JoinGroup2';
+import JoinGroup3 from '../screens/JoinGroup3';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import EditInfo from '../screens/EditInfo';
+
+
 
 const BallotStack = createStackNavigator({
   Ballot: BallotScreen,
@@ -28,6 +32,7 @@ const BallotStack = createStackNavigator({
   Secretary: SecretaryScreen,
   Decisions: DecisionsScreen,
 });
+
 
 BallotStack.navigationOptions = {
   tabBarLabel: 'Your Ballot',
@@ -43,7 +48,9 @@ BallotStack.navigationOptions = {
 
 const VotingStack = createStackNavigator({
   Voting: VotingScreen,
-  Join: JoinGroup,
+  Join1: JoinGroup1,
+  Join2: JoinGroup2,
+  Join3: JoinGroup3,
   Create: CreateGroup,
 });
 
