@@ -252,6 +252,20 @@ export default class App extends Component {
     header: null,
   }; 
 
+  isFocused() {
+    this.forceUpdate();
+  }
+
+  componentDidMount() {
+    this.subs = [
+      this.props.navigation.addListener('didFocus', () => this.isFocused()),
+    ];
+  }
+
+  componentWillUnmount() {
+    this.subs.forEach(sub => sub.remove());
+  }
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
@@ -324,7 +338,7 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
-      marginBottom: 75,
+      marginBottom: 30,
   },
   backButton: {
       marginTop: 10,
