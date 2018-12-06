@@ -255,7 +255,7 @@ export default class App extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <Text style={styles.Header}> Confirm Info </Text>
+        <Text style={styles.Header}> Profile </Text>
         <Text style={styles.SubHeader}> See and update your information here </Text>
         <ScrollView style={styles.scrollContainer}> 
           <Form 

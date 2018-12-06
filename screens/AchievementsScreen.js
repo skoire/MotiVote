@@ -24,15 +24,31 @@ export default class IntroScreen extends React.Component {
         	<Text style={styles.SubHeader}> Look at all you've accomplished </Text>
           <View style={styles.imageContainer}>
               <Image
-                source={require('../assets/images/Trophy.png')}
+                source={require('../assets/images/trophyPurple.png')}
                 style={styles.logoImage}
             />
+            <Text style={styles.achievementLabelComplete}> Registered to vote </Text>
           </View>
           <View style={styles.imageContainer}>
               <Image
-                source={require('../assets/images/Trophy.png')}
+                source={require('../assets/images/trophyGrey.png')}
                 style={styles.logoImage}
-            />
+              />
+              <Text style={styles.achievementLabelIncomplete}> Made first voting decision </Text>
+          </View>
+          <View style={styles.imageContainer}>
+              <Image
+                source={require('../assets/images/trophyGrey.png')}
+                style={styles.logoImage}
+              />
+              <Text style={styles.achievementLabelIncomplete}> Finished voting decisions </Text>
+          </View>
+          <View style={styles.imageContainer}>
+              <Image
+                source={require('../assets/images/trophyGrey.png')}
+                style={styles.logoImage}
+              />
+              <Text style={styles.achievementLabelIncomplete}> Joined voting group </Text>
           </View>
       	</View>
     );
@@ -48,12 +64,26 @@ const styles = StyleSheet.create({
       width: 100,
       height: 60,
       resizeMode: 'contain',
-      marginLeft: -5,
+      marginLeft: 5,
   },
   imageContainer: {
       backgroundColor: '#fff',
       marginBottom: 20,
       flexDirection: 'row',
+  },
+  achievementLabelComplete: {
+    fontFamily: 'Charter-Bold',
+    lineHeight: 60,
+    marginLeft: 15,
+    fontSize: 18,
+    color: '#66257D', 
+  },
+  achievementLabelIncomplete: {
+    fontFamily: 'Charter-Bold',
+    lineHeight: 60,
+    marginLeft: 15,
+    fontSize: 18,
+    color: '#8B8E95', 
   },
   Header: {
       paddingTop: 35,
@@ -67,7 +97,7 @@ const styles = StyleSheet.create({
      SubHeader:{
       textAlign: 'left',
       marginLeft: 20,
-      marginBottom: 30,
+      marginBottom: 40,
       fontSize: 17,
       lineHeight: 17,
       fontFamily: 'Charter',
