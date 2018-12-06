@@ -64,8 +64,7 @@ export default class BallotScreen extends React.Component {
     if (govDec === "Undecided") govStatus++;
     if (secDec === "Undecided") secStatus++;
 
-    //decLeft = propStatus + govStatus + secStatus;
-    //decLeft = decLeft===0 ? null: decLeft;
+    global.decLeft = propStatus + govStatus + secStatus;
     
     return (
       <View style={styles.container} behavior="padding" enabled>
@@ -120,6 +119,7 @@ const styles = StyleSheet.create({
   },
     TitleFont:{
       fontFamily: 'Charter',
+      fontSize: 20,
       marginLeft: 11,
   },
     Title:{

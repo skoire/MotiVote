@@ -21,13 +21,13 @@ export default class IntroScreen extends React.Component {
     return (
         <View style={styles.container}>
           <Text style={styles.instructionTextTop}> Congratulations! </Text>
+          <Text style={styles.instructionTextMedium}> We've registered</Text>
+          <Text style={styles.instructionTextBottom}> you to vote!</Text>
+
           <Image
-                source={require('../assets/images/MotiVote-logo.png')}
+                source={require('../assets/images/Logo.jpeg')}
                 style={styles.logoImage}
             />
-          <Text style={styles.instructionTextBottom}> registered </Text>
-          <Text style={styles.instructionTextBottom}> you to vote! </Text>
-
           <TouchableOpacity
               style={styles.button}
               onPress={() => this.props.cb()}>
@@ -47,19 +47,27 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
   },
   logoImage: {
-      width: 200,
-      height: 75,
+      width: 300,
+      height: 200,
       resizeMode: 'contain',
       marginLeft: 8,
+      marginBottom: 50,
   },
   instructionTextTop: {
+      fontSize: 40,
+
+      lineHeight: 50,
+      textAlign: 'center',
+      fontFamily: 'Charter-Bold',
+      color: '#66257D',
+      marginTop: 20,
+  },
+  instructionTextMedium: {
       fontSize: 40,
       lineHeight: 50,
       textAlign: 'center',
       fontFamily: 'Charter',
       color: '#66257D',
-      marginTop: 50,
-      marginBottom: 115,
   },
   instructionTextBottom: {
       fontSize: 40,
@@ -67,6 +75,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontFamily: 'Charter',
       color: '#66257D',
+      marginBottom: 55,
   },
   buttonText: {
       fontSize: 22,
@@ -86,6 +95,6 @@ const styles = StyleSheet.create({
       padding: 12,
       textAlign:'center',
       width: 250,
-      marginTop: 155,
+      marginTop: 70,
   },
 });

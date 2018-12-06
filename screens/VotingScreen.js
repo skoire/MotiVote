@@ -41,7 +41,7 @@ export default class VotingScreen extends React.Component {
 
       <FlatList 
           data = {[
-            {key: 'Sami, Maria, Armando', value: '10:30 AM'}, 
+            {key: 'Sami, Armando', value: '10:30 AM'}, 
             {key: 'Elizabeth', value: '2:00 PM'},
             {key: 'Joe, Ed', value: '3:45 PM'}, 
             {key: 'Start your own group!', value: ''}]}
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   },
     TitleFont:{
       fontFamily: 'Charter',
+      fontSize: 20,
       marginLeft: 11,
   },
     Title:{

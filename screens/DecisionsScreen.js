@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
   },
     TitleFont:{
       fontFamily: 'Charter',
+      fontSize: 20,
       marginLeft: 11,
   },
   backButton: {
