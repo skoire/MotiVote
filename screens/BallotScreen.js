@@ -23,6 +23,50 @@ export default class BallotScreen extends React.Component {
   };
 
   render() {
+    propStatus = 0;
+    govStatus = 0;
+    secStatus = 0;
+
+    prop1dec = false;
+    try{
+    prop1dec = global.prop1Data.find(e => e.selected == true);
+    } catch {}
+    prop1dec = prop1dec ? prop1dec.label : "Undecided";
+
+    prop2dec = false;
+    try{
+    prop2dec = global.prop2Data.find(e => e.selected == true);
+    } catch {}
+    prop2dec = prop2dec ? prop2dec.label : "Undecided";
+
+    prop3dec = false;
+    try{
+    prop3dec = global.prop3Data.find(e => e.selected == true);
+    } catch {}
+    prop3dec = prop3dec ? prop3dec.label : "Undecided";
+
+    if (prop1dec === "Undecided") propStatus++;
+    if (prop2dec === "Undecided") propStatus++;
+    if (prop3dec === "Undecided") propStatus++;
+
+    govDec = false;
+    try{
+    govDec = global.governorData.find(e => e.selected == true);
+    } catch {}
+    govDec = govDec ? govDec.label : "Undecided";
+
+    secDec = false;
+    try{
+    secDec = global.secretaryData.find(e => e.selected == true);
+    } catch {}
+    secDec = secDec ? secDec.label : "Undecided";
+
+    if (govDec === "Undecided") govStatus++;
+    if (secDec === "Undecided") secStatus++;
+
+    //decLeft = propStatus + govStatus + secStatus;
+    //decLeft = decLeft===0 ? null: decLeft;
+    
     return (
       <View style={styles.container} behavior="padding" enabled>
       <Text style = {styles.Header}> Your Ballot </Text>
@@ -32,16 +76,16 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.Title}> </Text>
 
         <FlatList 
-          data = {[{key: 'Propositions', screen: 'Propositions', value: '3'}, 
-            {key: 'Governor', screen: 'Governor', value: '1'},
-            {key: 'Secretary of State', screen: 'Secretary', value: '1'}, 
+          data = {[{key: 'Propositions', screen: 'Propositions', value: propStatus}, 
+            {key: 'Governor', screen: 'Governor', value: govStatus},
+            {key: 'Secretary of State', screen: 'Secretary', value: secStatus}, 
             {key: 'Your Decisions', screen: 'Decisions', value: '5'}]}
           renderItem = {({item}) => (
           <TouchableOpacity onPress={this.onPress.bind(this, item.screen)}>
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}
-          badge={{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: '#66257D' } }}
+          badge= {{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: '#66257D' } }}
           chevron = {true} 
           bottomDivider = {true}
           />

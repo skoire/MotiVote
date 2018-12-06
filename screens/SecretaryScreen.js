@@ -46,7 +46,7 @@ export default class BallotScreen extends React.Component {
       <View style={styles.container} behavior="padding" enabled>
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => this.props.navigation.goBack()}>
+        onPress={() => this.props.navigation.navigate('Ballot',{value: global.secretaryData})}>
         <Text style={styles.backButtonText}> {'< Ballot'} </Text>
       </TouchableOpacity>
       <Text style = {styles.Header}> Secretary of State</Text>
