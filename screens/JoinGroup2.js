@@ -38,6 +38,9 @@ onPress(status) {
 render() {
   global.inGroup = global.inGroup === undefined ? false: global.inGroup
   buttonStatus = global.inGroup === true && global.group === 'Elizabeth'? 'Leave Group': 'Join Group'
+  text1 = buttonStatus === 'Join Group' && global.inGroup === true ? 'Joining this group will': ''
+  text2 = buttonStatus === 'Join Group' && global.inGroup === true ? 'leave the group you are currently in!': ''
+  
   return (
     <View style={styles.container} behavior="padding" enabled>
       <TouchableOpacity
@@ -55,7 +58,9 @@ render() {
       <Text style = {styles.SubHeader2}>                Palo Alto Fire Station # 05</Text>
       <Text style = {styles.SubHeader2}>                600 Arastradero Rd</Text>
       <Text style = {styles.SubHeader2}>                Palo Alto, CA 94306</Text>
-      
+      <Text style = {styles.SubHeader3}> {text1} </Text>
+      <Text style = {styles.SubHeader4}> {text2} </Text>
+
       <TouchableOpacity
         style={styles.button}
         onPress={this.onPress.bind(this, buttonStatus)}>
@@ -102,6 +107,21 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontFamily: 'Charter',
   },
+  SubHeader3:{
+      textAlign: 'center',
+      marginLeft: 20,
+      marginTop: 100,
+      fontSize: 20,
+      fontFamily: 'Charter-Bold',
+      paddingRight: 8,
+  },
+  SubHeader4:{
+      textAlign: 'center',
+      marginLeft: 20,
+      fontSize: 20,
+      fontFamily: 'Charter-Bold',
+      paddingRight: 8,
+  },
   backButton: {
       marginTop: 60,
       backgroundColor: '#66257D',
@@ -141,8 +161,8 @@ const styles = StyleSheet.create({
       padding: 12,
       textAlign:'center',
       width: 250,
-      marginLeft: 55,
-      marginTop: 170,
+      marginLeft: 65,
+      marginTop: 20,
   },
   container: {
     marginTop: 0,

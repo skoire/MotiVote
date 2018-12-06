@@ -38,8 +38,8 @@ onPress(status) {
 render() {
   global.inGroup = global.inGroup === undefined ? false: global.inGroup
   buttonStatus = global.inGroup === true && global.group === 'Sami, Armando' ? 'Leave Group': 'Join Group'
-  text1 = buttonStatus === 'Leave Group' ? '': 'Joining this group will'
-  text2 = buttonStatus === 'Leave Group' ? '': 'leave the group you are currently in!'
+  text1 = buttonStatus === 'Join Group' && global.inGroup === true ? 'Joining this group will': ''
+  text2 = buttonStatus === 'Join Group' && global.inGroup === true ? 'leave the group you are currently in!': ''
 
   return (
     <View style={styles.container} behavior="padding" enabled>
