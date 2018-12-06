@@ -14,6 +14,7 @@ import { ListItem } from 'react-native-elements'
 
 
 export default class BallotScreen extends React.Component {
+
   isFocused() {
     this.forceUpdate();
   }
