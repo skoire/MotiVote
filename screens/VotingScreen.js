@@ -36,8 +36,7 @@ export default class VotingScreen extends React.Component {
     return (
       <View style={styles.container} behavior="padding" enabled>
       <Text style = {styles.Header}> Voting Plans </Text>
-      <Text style = {styles.SubHeader}> Form or join a group to go to the polls with </Text> 
-      <Text style = {styles.SubHeader}> Your Friends at Your Polling Location!</Text>
+      <Text style = {styles.SubHeader}> Form or join a group to go vote with friends</Text> 
       <Text style = {styles.Title}> </Text>
       <Text style = {styles.Title2}> Your next election is </Text>
       <Text style = {styles.Title2}> Tuesday, November 6, 2018 </Text>
