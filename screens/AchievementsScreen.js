@@ -14,42 +14,90 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 export default class IntroScreen extends React.Component {
+
+  isFocused() {
+    this.forceUpdate();
+  }
+
+  componentDidMount() {
+    this.subs = [
+      this.props.navigation.addListener('didFocus', () => this.isFocused()),
+    ];
+  }
+
+  componentWillUnmount() {
+    this.subs.forEach(sub => sub.remove());
+  }
+
   static navigationOptions = {
     header: null,
   };
   render() {
+    oneDecision = global.decLeft === 5 ? 0 : 1
+    allDecisions = global.decLeft === 0 ? 1 : 0
+    groupStatus = global.group === undefined ? 0 : 1
+
+ 
+    images = [require('../assets/images/trophyPurple.png'  ), require('../assets/images/trophyGrey.png')];
+    stylesText = [styles.achievementLabelComplete, styles.achievementLabelIncomplete];
+    if (oneDecision === 1){
+      firstDecision = true   
+    }
+    else {
+      firstDecision = false  
+    }
+
+    if (allDecisions === 1){
+      fiveDecisions = true   
+    }
+    else {
+      fiveDecisions = false  
+    }
+
+    if (groupStatus === 1){
+      votingPlans = true   
+    }
+    else {
+      votingPlans = false  
+    }
+
     return (
         <View style={styles.container}>
         	<Text style={styles.Header}> Achievements </Text>
         	<Text style={styles.SubHeader}> Look at all you've accomplished </Text>
+
           <View style={styles.imageContainer}>
               <Image
                 source={require('../assets/images/trophyPurple.png')}
                 style={styles.logoImage}
-            />
+              />
             <Text style={styles.achievementLabelComplete}> Registered to vote </Text>
           </View>
+
           <View style={styles.imageContainer}>
-              <Image
-                source={require('../assets/images/trophyGrey.png')}
-                style={styles.logoImage}
-              />
-              <Text style={styles.achievementLabelIncomplete}> Made first voting decision </Text>
+            <Image
+                  source={firstDecision ? images[0] : images[1]}
+                  style={styles.logoImage}
+                />
+                <Text style={firstDecision ? stylesText[0] : stylesText[1]}> Made first voting decision </Text>
           </View>
+
           <View style={styles.imageContainer}>
-              <Image
-                source={require('../assets/images/trophyGrey.png')}
-                style={styles.logoImage}
-              />
-              <Text style={styles.achievementLabelIncomplete}> Finished voting decisions </Text>
+            <Image
+                  source={fiveDecisions ? images[0] : images[1]}
+                  style={styles.logoImage}
+                />
+                <Text style={fiveDecisions ? stylesText[0] : stylesText[1]}> Finished voting decisions </Text>
           </View>
+
           <View style={styles.imageContainer}>
-              <Image
-                source={require('../assets/images/trophyGrey.png')}
-                style={styles.logoImage}
-              />
-              <Text style={styles.achievementLabelIncomplete}> Joined voting group </Text>
+            <Image
+                  source={votingPlans ? images[0] : images[1]}
+                  style={styles.logoImage}
+                />
+                <Text style={votingPlans ? stylesText[0] : stylesText[1]}> Joined voting group </Text>
           </View>
+
       	</View>
     );
   }
