@@ -195,8 +195,6 @@ export default class IntroScreen extends React.Component {
   
   render() {
     const size = this.state.size.interpolate({
-      // inputRange: [280, 300],
-      // outputRange: [300, 280],
       inputRange: [380, 390],
       outputRange: [390, 380],
       extrapolate: 'clamp',
@@ -206,7 +204,6 @@ export default class IntroScreen extends React.Component {
       <View style={styles.container}>
         <Text style={styles.instructionTextTop}> Scan your ID </Text>
         <Text style={styles.instructionTextBottom}> to see if you're registered </Text>
-        <Text style={styles.cameraText}> Press the camera icon below to scan your ID! </Text>
         <TouchableOpacity
           style={styles.cameraButton}
           onPress={() => this.props.cb()}>
@@ -215,7 +212,7 @@ export default class IntroScreen extends React.Component {
               width: size,
               height: size,
             }]}
-            source={require('../assets/images/Scan-complete.png')}
+            source={require('../assets/images/Final-scan.jpeg')}
           />
         </TouchableOpacity>
         <TouchableOpacity
@@ -234,7 +231,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#fff',
   },
   image: {
     justifyContent:'center',
@@ -250,6 +247,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontFamily: 'Charter-Bold',
       color: '#66257D',
+      marginTop: -30,
   },
   instructionTextBottom: {
       fontSize: 25,
@@ -257,7 +255,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontFamily: 'Charter',
       color: '#66257D',
-      marginBottom: 10,
+      marginBottom: 38,
   },
   cameraText: {
       fontSize: 16,
@@ -270,7 +268,7 @@ const styles = StyleSheet.create({
   cameraButton: {
     backgroundColor: '#fff',
     paddingTop: 180,
-    marginBottom: 55,
+    marginBottom: 50,
     shadowColor: '#303838',
     shadowOffset: { width: 0, height: 10 },
     shadowRadius: 10,

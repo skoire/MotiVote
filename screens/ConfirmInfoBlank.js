@@ -21,6 +21,14 @@ const Form = t.form.Form;
 Form.stylesheet.dateValue.normal.borderColor = '#d0d2d3';
 Form.stylesheet.dateValue.normal.backgroundColor = '#fff';
 Form.stylesheet.dateValue.normal.borderWidth = 1;
+Form.stylesheet.dateValue.normal.borderRadius = 4;
+Form.stylesheet.dateValue.normal.height = 39;
+Form.stylesheet.dateValue.error.borderColor = '#a94442';
+Form.stylesheet.dateValue.error.backgroundColor = '#fff';
+Form.stylesheet.dateValue.error.borderWidth = 1;
+Form.stylesheet.dateValue.error.borderRadius = 4;
+Form.stylesheet.dateValue.error.height = 39;
+
 
 const User = t.struct({
   first: t.String,

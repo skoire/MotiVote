@@ -22,8 +22,18 @@ export default class IntroScreen extends React.Component {
         <View style={styles.container}>
         	<Text style={styles.Header}> Achievements </Text>
         	<Text style={styles.SubHeader}> Look at all you've accomplished </Text>
-            
-
+          <View style={styles.imageContainer}>
+              <Image
+                source={require('../assets/images/Trophy.png')}
+                style={styles.logoImage}
+            />
+          </View>
+          <View style={styles.imageContainer}>
+              <Image
+                source={require('../assets/images/Trophy.png')}
+                style={styles.logoImage}
+            />
+          </View>
       	</View>
     );
   }
@@ -33,6 +43,17 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       paddingTop: 30,
+  },
+  logoImage: {
+      width: 100,
+      height: 60,
+      resizeMode: 'contain',
+      marginLeft: -5,
+  },
+  imageContainer: {
+      backgroundColor: '#fff',
+      marginBottom: 20,
+      flexDirection: 'row',
   },
   Header: {
       paddingTop: 35,
