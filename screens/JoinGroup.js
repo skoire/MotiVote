@@ -41,7 +41,7 @@ export default class BallotScreen extends React.Component {
         
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('Plans')}>
+          onPress={() => this.props.navigation.navigate('Voting', {value: global.time})}>
           <Text style={styles.buttonText}> Join Group </Text>
         </TouchableOpacity>
         </View>
