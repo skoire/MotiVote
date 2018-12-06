@@ -95,6 +95,7 @@ export default class BallotScreen extends React.Component {
             {key: 'Governor', screen: 'Governor', value: govStatus},
             {key: 'Secretary of State', screen: 'Secretary', value: secStatus}, 
             {key: 'Your Decisions', screen: 'Decisions', value: '5'}]}
+          scrollEnabled={false}  
           renderItem = {({item}) => (
           <TouchableOpacity onPress={this.onPress.bind(this, item.screen)}>
           <ListItem 

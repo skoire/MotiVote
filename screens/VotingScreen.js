@@ -51,6 +51,7 @@ export default class VotingScreen extends React.Component {
             {key: 'Elizabeth', value: '2:00 PM'},
             {key: 'Joe, Ed', value: '3:45 PM'}, 
             {key: 'Start your own group!', value: ''}]}
+          scrollEnabled={false}  
           renderItem = {({item}) => (
             //the on press button needs to store the key/value pair picked into the global variable sheet
             //if picked a group, go to join group screen and populate with 

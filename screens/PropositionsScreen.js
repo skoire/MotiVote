@@ -39,6 +39,7 @@ export default class BallotScreen extends React.Component {
           data = {[{key: 'Proposition 1', value: 'one'}, 
             {key: 'Proposition 2', value: 'two'}, 
             {key: 'Proposition 3', value: 'three'}]}
+          scrollEnabled={false}
           renderItem = {({item}) => (
           <TouchableOpacity onPress={this.onPress.bind(this, item.value)}>
             <ListItem 
