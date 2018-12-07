@@ -16,26 +16,43 @@ export default class VotingScreen extends React.Component {
     header: null,
   };
 
+isFocused() {
+    this.forceUpdate();
+  }
+
+  componentDidMount() {
+    this.subs = [
+      this.props.navigation.addListener('didFocus', () => this.isFocused()),
+    ];
+  }
+
+  componentWillUnmount() {
+    this.subs.forEach(sub => sub.remove());
+  }
+
   onPress(group, time) {
     if(group === 'Start your own group!') {
       this.props.navigation.navigate('Create')
-    } else if (group === 'Sami, Armando') {
+    } else if (group === 'Sami, Armando' || group === 'You, Sami, Armando') {
       this.props.navigation.navigate('Join1')
-    } else if (group === 'Elizabeth') {
+    } else if (group === 'Elizabeth' || group === 'You, Elizabeth') {
       this.props.navigation.navigate('Join2')
-    } else if (group === 'Joe, Ed') {
+    } else if (group === 'Joe, Ed' || group === 'You, Joe, Ed') {
       this.props.navigation.navigate('Join3')
+    } else if (group === 'You') {
+      this.props.navigation.navigate('editOrLeave')
     }
   };
 
   render() {
-    groupStatus = global.group === undefined ? 'You are not in a group yet!': 'Your Group: ' + global.group
+    preStatus = global.group === undefined ? 'You are not in a group yet!': 'Your Group: ' + global.group
+    groupStatus = global.group === 'You' || global.group === undefined ? preStatus : 'Your Group: You, ' + global.group
     timeStatus = global.time === undefined ? '': 'Meeting Time:  ' + global.time
     startGroup = global.inGroup === true && global.group === 'You' ? 'You' : 'Start your own group!'
-    startTime = global.inGroup === true && global.group === 'You' ? '' + global.time : ''
-    console.log(startGroup)
-    console.log(startTime)
-
+    startTime = global.inGroup === true && global.group === 'You' ? global.time : ''
+    groupOne = global.inGroup === true && global.group === 'Sami, Armando' ? 'You, Sami, Armando' : 'Sami, Armando'
+    groupTwo = global.inGroup === true && global.group === 'Elizabeth' ? 'You, Elizabeth' : 'Elizabeth'
+    groupThree = global.inGroup === true && global.group === 'Joe, Ed' ? 'You, Joe, Ed' : 'Joe, Ed'
     return (
       <View style={styles.container} behavior="padding" enabled>
       <Text style = {styles.Header}> Voting Plans </Text>
@@ -50,9 +67,9 @@ export default class VotingScreen extends React.Component {
 
       <FlatList 
           data = {[
-            {key: 'Sami, Armando', value: '10:30 AM'}, 
-            {key: 'Elizabeth', value: '2:00 PM'},
-            {key: 'Joe, Ed', value: '3:45 PM'}, 
+            {key: groupOne, value: '10:30 AM'}, 
+            {key: groupTwo, value: '2:00 PM'},
+            {key: groupThree, value: '3:45 PM'}, 
             {key: startGroup, value: startTime}]}
           scrollEnabled={false}  
           renderItem = {({item}) => (

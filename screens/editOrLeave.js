@@ -61,7 +61,7 @@ const formStyles = {
 const options = {
   fields: {
     meetTime: {
-      label: 'Meeting time:',
+      label: 'New Time:',
       error: 'Please enter your meeting time',
       config: {
         format: (time) => moment(time).format('hh:mm A'), 
@@ -89,9 +89,13 @@ export default class App extends Component {
     this.props.navigation.navigate('Voting', {value: global.time});
   }
 
+  _submit = () => {
+    global.time = undefined;
+    global.group = undefined;
+    global.inGroup = false;
+    this.props.navigation.navigate('Voting', {value: global.time});
+  }
   render() {
-    text1 = global.group !== 'You' && global.inGroup === true ? 'Joining this group leaves': ''
-    text2 = global.group !== 'You' && global.inGroup === true ? 'the one you\'re currently in!': ''
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <TouchableOpacity
@@ -111,13 +115,17 @@ export default class App extends Component {
           <Text style = {styles.SubHeader2}> Palo Alto Fire Station # 05</Text>
           <Text style = {styles.SubHeader2}> 600 Arastradero Rd</Text>
           <Text style = {styles.SubHeader2}> Palo Alto, CA 94306</Text>  
-          <Text style = {styles.SubHeader3}> {text1} </Text>
-          <Text style = {styles.SubHeader4}> {text2} </Text>
 
         <TouchableOpacity
               style={styles.button}
               onPress = { () => this.submit()}>
-              <Text style={styles.buttonText}> Confirm </Text>
+              <Text style={styles.buttonText}> Save Changes </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+              style={styles.button1}
+              onPress = { () => this._submit()}>
+              <Text style={styles.buttonText}> Leave Group </Text>
         </TouchableOpacity>  
     </KeyboardAvoidingView> 
     );
@@ -158,21 +166,6 @@ const styles = StyleSheet.create({
       marginBottom: 0,
       fontSize: 17,
   },
-   SubHeader3:{
-      textAlign: 'center',
-      marginLeft: 10,
-      marginTop: 10,
-      fontSize: 20,
-      fontFamily: 'Charter-Bold',
-      paddingRight: 8,
-  },
-  SubHeader4:{
-      textAlign: 'center',
-      marginLeft: 10,
-      fontSize: 20,
-      fontFamily: 'Charter-Bold',
-      paddingRight: 8,
-  },
   TitleFont:{
       paddingTop: 15,
       marginBottom: 8,
@@ -201,7 +194,20 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
       padding: 12,
       textAlign:'center',
-      marginBottom: 200,
+  },
+  button1: {
+      backgroundColor: '#66257D',
+      borderColor: 'white',
+      borderRadius: 10,
+      color: 'white',
+      fontSize: 24,
+      fontWeight: 'bold',
+      overflow: 'hidden',
+      padding: 12,
+      textAlign:'center',
+      width: 250,
+      marginLeft: 30,
+      marginTop: 10,
   },
   backButton: {
       marginTop: 20,

@@ -13,6 +13,7 @@ import SecretaryScreen from '../screens/SecretaryScreen';
 import DecisionsScreen from '../screens/DecisionsScreen';
 import VotingScreen from '../screens/VotingScreen';
 import CreateGroup from '../screens/CreateGroup';
+import editOrLeave from '../screens/editOrLeave'
 import JoinGroup1 from '../screens/JoinGroup1';
 import JoinGroup2 from '../screens/JoinGroup2';
 import JoinGroup3 from '../screens/JoinGroup3';
@@ -52,6 +53,7 @@ const VotingStack = createStackNavigator({
   Join2: JoinGroup2,
   Join3: JoinGroup3,
   Create: CreateGroup,
+  editOrLeave: editOrLeave,
 });
 
 VotingStack.navigationOptions = {
