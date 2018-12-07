@@ -36,13 +36,13 @@ const User = t.struct({
 });
 
 var val = {
-  first: 'Emma',
-  last: 'Dolan',
-  dob: new Date('February 25, 1998'),
-  address1: '123 45th St',
-  city: 'Palo Alto',
+  first: 'Alexander',
+  last: 'Sample',
+  dob: new Date('August 31, 1977'),
+  address1: '2570 24th Street',
+  city: 'Anytown',
   state: 'CA',
-  dl: 'A126542',
+  dl: 'I1234562',
 };
 
 const formStyles = {
