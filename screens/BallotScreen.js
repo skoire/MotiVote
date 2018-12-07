@@ -91,17 +91,17 @@ export default class BallotScreen extends React.Component {
       <Text style = {styles.Title}> </Text>
 
         <FlatList 
-          data = {[{key: 'Propositions', screen: 'Propositions', value: propStatus}, 
-            {key: 'Governor', screen: 'Governor', value: govStatus},
-            {key: 'Secretary of State', screen: 'Secretary', value: secStatus}, 
-            {key: 'Your Decisions', screen: 'Decisions', value: '5'}]}
+          data = {[{key: 'Propositions', screen: 'Propositions', value: propStatus, backgroundColor: '#66257D'}, 
+            {key: 'Governor', screen: 'Governor', value: govStatus, backgroundColor: '#66257D'},
+            {key: 'Secretary of State', screen: 'Secretary', value: secStatus, backgroundColor: '#66257D'}, 
+            {key: 'Your Decisions', screen: 'Decisions', value: '5', backgroundColor: '#ffffff'}]}
           scrollEnabled={false}  
           renderItem = {({item}) => (
           <TouchableOpacity onPress={this.onPress.bind(this, item.screen)}>
           <ListItem 
           title = {item.key}
           titleStyle = {styles.TitleFont}
-          badge= {{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: '#66257D' } }}
+          badge= {{ value: item.value, textStyle: { color: 'white' }, containerStyle: { backgroundColor: item.backgroundColor } }}
           chevron = {true} 
           bottomDivider = {true}
           />
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
     Title:{
       fontFamily: 'Charter-Bold',
-      fontSize: 20,
+      fontSize: 23,
       color: '#66257D',
       textAlign: 'center'
   },

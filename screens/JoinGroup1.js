@@ -38,8 +38,8 @@ onPress(status) {
 render() {
   global.inGroup = global.inGroup === undefined ? false: global.inGroup
   buttonStatus = global.inGroup === true && global.group === 'Sami, Armando' ? 'Leave Group': 'Join Group'
-  text1 = buttonStatus === 'Join Group' && global.inGroup === true ? 'Joining this group will': ''
-  text2 = buttonStatus === 'Join Group' && global.inGroup === true ? 'leave the group you are currently in!': ''
+  text1 = buttonStatus === 'Join Group' && global.inGroup === true ? 'Joining this group leaves': ''
+  text2 = buttonStatus === 'Join Group' && global.inGroup === true ? 'the one you\'re currently in!': ''
 
   return (
     <View style={styles.container} behavior="padding" enabled>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   SubHeader3:{
       textAlign: 'center',
-      marginLeft: 20,
+      marginLeft: 10,
       marginTop: 100,
       fontSize: 20,
       fontFamily: 'Charter-Bold',
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   SubHeader4:{
       textAlign: 'center',
-      marginLeft: 20,
+      marginLeft: 10,
       fontSize: 20,
       fontFamily: 'Charter-Bold',
       paddingRight: 8,

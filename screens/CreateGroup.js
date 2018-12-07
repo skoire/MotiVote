@@ -84,7 +84,6 @@ export default class App extends Component {
     value = this._form.getValue();
     time = value.meetTime;
     global.time = moment(time).format('hh:mm A').toString();
-    console.log(global.time)
     global.group = "You";
     this.props.navigation.navigate('Voting', {value: global.time});
   }

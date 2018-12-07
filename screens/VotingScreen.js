@@ -31,7 +31,10 @@ export default class VotingScreen extends React.Component {
   render() {
     groupStatus = global.group === undefined ? 'You are not in a group yet!': 'Your Group: ' + global.group
     timeStatus = global.time === undefined ? '': 'Meeting Time:  ' + global.time
-
+    startGroup = global.inGroup === true && global.group === 'You' ? 'You' : 'Start your own group!'
+    startTime = global.inGroup === true && global.group === 'You' ? '' + global.time : ''
+    console.log(startGroup)
+    console.log(startTime)
 
     return (
       <View style={styles.container} behavior="padding" enabled>
@@ -50,7 +53,7 @@ export default class VotingScreen extends React.Component {
             {key: 'Sami, Armando', value: '10:30 AM'}, 
             {key: 'Elizabeth', value: '2:00 PM'},
             {key: 'Joe, Ed', value: '3:45 PM'}, 
-            {key: 'Start your own group!', value: ''}]}
+            {key: startGroup, value: startTime}]}
           scrollEnabled={false}  
           renderItem = {({item}) => (
             //the on press button needs to store the key/value pair picked into the global variable sheet
@@ -109,13 +112,12 @@ const styles = StyleSheet.create({
       fontSize: 25,
       textAlign: 'center',
       marginTop: 12,
-      marginBottom: 10
   },
   yourTime:{
       fontFamily: 'Charter-Bold',
       fontSize: 25,
       textAlign: 'center',
-      marginBottom: 10
+      marginBottom: 15  
   },
     Title2:{
       fontFamily: 'Charter-Bold',
